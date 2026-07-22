@@ -1,3 +1,6 @@
 [submodule "Packages/blueberry-jam-core"]
 	path = Packages/blueberry-jam-core
 	url = https://github.com/Blueberry-Jam-Games/Blueberry-Jam-Core-Package
+[submodule "Packages/io.blueberryjam.blueberry-jam-games.core"]
+	path = Packages/io.blueberryjam.blueberry-jam-games.core
+	url = https://github.com/Blueberry-Jam-Games/Blueberry-Jam-Core-Package
