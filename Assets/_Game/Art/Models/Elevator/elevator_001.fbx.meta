@@ -3,7 +3,47 @@ guid: 58ce80bc5aa78204fa78aa4403de8336
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorFrame_mat
+    second: {fileID: 2100000, guid: 8c154e40ae351394da5d5333788fb038, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Elevator_floor_mat
+    second: {fileID: 2100000, guid: 4373f51701b41e2488bb9c05b25d17d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevatorDoors_inner_mat
+    second: {fileID: 2100000, guid: b49a9e24ab307724b8076125e1c59dd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevatorDoors_outer_mat
+    second: {fileID: 2100000, guid: 6c4eeeeb33a605147a6ba133d12aa1bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_exterior_mat
+    second: {fileID: 2100000, guid: 4f18031abbf8b2447bbbdcd57460096e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_interior_mat
+    second: {fileID: 2100000, guid: c2c1c05f2157ca44181fe4844401c0ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_light_mat
+    second: {fileID: 2100000, guid: c2c9e4c093efa9f409d2f3ce4cdc5e1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_railing_mat
+    second: {fileID: 2100000, guid: 107113214b6833a4181c0d5bbbc2418a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
