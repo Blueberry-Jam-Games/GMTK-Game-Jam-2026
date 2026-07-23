@@ -11,6 +11,10 @@ public class ElevatorButton : MonoBehaviour
     [SerializeField]
     private Toggle buttonToggle;
 
+    private string floorMeaning;
+
+    private Elevator parent;
+
     private void Start()
     {
         buttonToggle.onValueChanged.AddListener (OnToggle);
@@ -23,11 +27,28 @@ public class ElevatorButton : MonoBehaviour
 
     private void OnToggle (bool toggle)
     {
+        Debug.Log ($"Button {floorMeaning} pressed");
+        if (!toggle)
+        {
+            buttonToggle.isOn = true;
+            // do nothing
+        }
+        else
+        {
+            parent.AddDestination (floorMeaning);
+        }
         // Do something interesting
     }
 
-    public void Initialize (string floor)
+    public void Initialize (Elevator parent, string floor)
     {
         floorText.text = floor;
+        floorMeaning = floor;
+        this.parent = parent;
+    }
+
+    public void Reset ()
+    {
+        buttonToggle.isOn = false;
     }
 }

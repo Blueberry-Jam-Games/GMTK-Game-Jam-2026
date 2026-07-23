@@ -21,15 +21,20 @@ public class Elevator : MonoBehaviour
     private List<ElevatorButton> buttons;
     private float speed = 1; // Floors per second
 
-    private float floor = 0.0f; // base 0
+    public float floor = 0.0f; // base 0
     private Queue<int> destinations;
     private int calledToFloor = -1;
-    private bool doorOpen = false;
+    private bool doorOpen = true;
 
     private void Awake ()
     {
         buttons = new List<ElevatorButton> ();
         destinations = new Queue<int> ();
+    }
+
+    private void Start ()
+    {
+        StartCoroutine (DoElevator ());
     }
 
     public void Initialize (ElevatorEntry source)
@@ -38,7 +43,7 @@ public class Elevator : MonoBehaviour
         {
             GameObject newButton = GameObject.Instantiate (buttonPrefab, buttonRoot);
             ElevatorButton eb = newButton.GetComponent<ElevatorButton> ();
-            eb.Initialize (floor);
+            eb.Initialize (this, floor);
 
             buttons.Add (eb);
         }
@@ -50,25 +55,57 @@ public class Elevator : MonoBehaviour
     {
         while (true)
         {
-            if (destinations.Peek () - floor > Mathf.Epsilon && !doorOpen)
+            if (destinations.Count != 0)
             {
-                floor = Mathf.MoveTowards (floor, destinations.Peek (), speed / Time.deltaTime);
-            }
-            else if (floor - destinations.Peek () < Mathf.Epsilon)
-            {
-                if (calledToFloor == destinations.Peek ())
+                Debug.Log ($"Has new destination {destinations.Peek ()}");
+                if (Mathf.Abs (destinations.Peek () - floor) > Mathf.Epsilon && !doorOpen)
                 {
-                    yield return OpenDoor ();
-                }
-                else
-                {
-                    yield return BJ.Coroutines.WaitforSeconds (2); // Dwell times
-                }
+                    Debug.Log ("Doors closed, moving");
 
-                // Done after that logic
-                destinations.Dequeue ();
+                    floor = Mathf.MoveTowards (floor, destinations.Peek (), speed * Time.deltaTime);
+                }
+                else if (Mathf.Abs (floor - destinations.Peek ()) < Mathf.Epsilon)
+                {
+                    Debug.Log ($"At destination {destinations.Peek ()}, doors opening");
+
+                    buttons[destinations.Peek ()].Reset ();
+
+                    if (calledToFloor == destinations.Peek ())
+                    {
+                        yield return OpenDoor ();
+                    }
+                    else
+                    {
+                        yield return BJ.Coroutines.WaitforSeconds (2); // Dwell times
+                    }
+
+                    // Done after that logic
+                    destinations.Dequeue ();
+                }
+                else if (doorOpen)
+                {
+                    Debug.Log ("Ready to go, closing door");
+                    yield return CloseDoor ();
+                }
             }
+            yield return null;
         }
+    }
+
+    public void AddDestination (string floor)
+    {
+        int newDest = 0;
+
+        if (floor.Equals ("G"))
+        {
+            newDest = 0;      
+        }
+        else
+        {
+            newDest = int.Parse (floor) - 1;
+        }
+
+        destinations.Enqueue (newDest);
     }
 
     private IEnumerator OpenDoor ()
