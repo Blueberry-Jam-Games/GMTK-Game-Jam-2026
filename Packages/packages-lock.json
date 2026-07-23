@@ -193,6 +193,14 @@
       },
       "url": "https://packages.unity.com"
     },
+    "io.blueberryjam.blueberry-jam-games.core": {
+      "version": "file:io.blueberryjam.blueberry-jam-games.core",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.shadergraph": "14.0.10"
+      }
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
