@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1048195345dae124eb078e2be2514e19, type: 3}
   m_Name: Elevators
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorDefinitions
-  elevatorSize: {x: 5, y: 5, z: 5}
-  doorSize: {x: 2, y: 2, z: 2}
+  elevatorSize: {x: 2.25, y: 2.25, z: 1.5}
+  doorSize: {x: 2, y: 2.25, z: 0.04}
   elevators:
   - position: {x: 0, y: 0, z: 0}
     floors:
-    - 1
+    - G
     - 2
     - 3
-    doorSide: 0
+    doorSide: 1
+  levelMap:
+  - level: GroundFloor
+    floorName: 1
+  - level: Floor2
+    floorName: 2
