@@ -1,11 +1,14 @@
+using System;
+using System.Collections;
 using TMPro;
 using Unity.Mathematics;
 using Unity.Multiplayer.Center.Common.Analytics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class CharacterController : MonoBehaviour
+public class BJCharacterController : MonoBehaviour
 {
     public Camera head;
 
@@ -29,10 +32,17 @@ public class CharacterController : MonoBehaviour
     public string interactableInfoText = "Interact [e]";
     public string speakableInfoText = "Speak [e]";
 
+    public Canvas dialogueCanvas;
+    public TextMeshProUGUI dialogueBox;
+    public TextMeshProUGUI characterName;
+    public Image characterIcon;
+
     [Header("Player Locks")]
     public bool enableMovement = true;
     public bool enableMouse = true;
     public bool enableInteraction = true;
+
+    public bool inDialogue = false;
 
 
     // Internal
@@ -42,6 +52,11 @@ public class CharacterController : MonoBehaviour
 
     private Vector3 HeadRotation;
     private Rigidbody rb;
+
+    private DialogueSO activeDialogue = null;
+
+    public Action dialogueEnd;
+
     void Start()
     {
         movement = InputSystem.actions.FindAction("Move");
@@ -110,12 +125,15 @@ public class CharacterController : MonoBehaviour
                     validSpeach = true;
                     if(interact.WasPressedThisFrame())
                     {
-                        nearestNPCSpeakable.Interact();
+                        activeDialogue = nearestNPCSpeakable.Interact(out Speakable s);
+                        dialogueEnd += exitDialogue;
+                        dialogueEnd += s.InteractionEnd;
+                        enterDialogue(activeDialogue, dialogueEnd);
                     }
                 }
             }
 
-            if(!validSpeach && !validInteractable)
+            if(!validSpeach && !validInteractable || inDialogue)
             {
                 crosshairInfo.text = "";
             }
@@ -156,4 +174,41 @@ public class CharacterController : MonoBehaviour
         }
         #endregion
     }
+
+    private void enterDialogue(DialogueSO dialogue, Action callback = null)
+    {
+        enableMouse = false;
+        enableMovement = false;
+        enableInteraction = false;
+        inDialogue = true;
+
+        dialogueCanvas.enabled = true;
+        dialogueBox.text = "";
+
+        characterIcon.sprite = dialogue.CharacterArt;
+
+        characterName.text = dialogue.name;
+
+        StartCoroutine(RunInteraction(activeDialogue, callback));
+    }
+
+    private void exitDialogue()
+    {
+        enableMouse = true;
+        enableMovement = true;
+        enableInteraction = true;
+        inDialogue = false;
+
+        dialogueCanvas.enabled = false;
+    }
+
+#region Interaction Handeler
+    IEnumerator RunInteraction(DialogueSO dialogue, Action callback = null)
+    {
+        Debug.Log("RunInteraction");
+        yield return new WaitForSeconds(2f);
+        callback?.Invoke();
+    }
+
+#endregion
 }

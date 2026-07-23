@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Speakable : MonoBehaviour
 {
-    public event Action OnInteraction;
+    public event Action OnInteractionEnd;
     public bool speechBubble = false;
+    public DialogueSO dialogue;
 
     [SerializeField] private bool ActualState;
 
@@ -19,8 +20,15 @@ public class Speakable : MonoBehaviour
         speechBubble = false;
     }
 
-    public void Interact()
+    public DialogueSO Interact(out Speakable speakable)
     {
         Debug.Log($"Speak to {name}");
+        speakable = this;
+        return dialogue;
+    }
+
+    public void InteractionEnd()
+    {
+        OnInteractionEnd?.Invoke();
     }
 }
