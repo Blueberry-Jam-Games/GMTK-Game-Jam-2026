@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Dialogue1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   CharacterArt: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  name: Bob
-  dialogue:
-  - Hello World
+  dialogues: []
