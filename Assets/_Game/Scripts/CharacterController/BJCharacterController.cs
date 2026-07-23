@@ -37,6 +37,7 @@ public class BJCharacterController : MonoBehaviour
     public TextMeshProUGUI dialogueBox;
     public TextMeshProUGUI characterName;
     public Image characterIcon;
+    public int lettersPerSecond = 60;
 
     [Header("Player Locks")]
     public bool enableMovement = true;
@@ -186,6 +187,8 @@ public class BJCharacterController : MonoBehaviour
         dialogueCanvas.enabled = true;
         dialogueBox.text = "";
 
+        rb.linearVelocity = Vector3.zero;
+
         StartCoroutine(RunInteraction(activeDialogue, callback));
     }
 
@@ -204,9 +207,16 @@ public class BJCharacterController : MonoBehaviour
     {
         foreach(CharacterDialogue c in dialogue.dialogues)
         {
+            characterName.text = c.characterName;
+            characterIcon.sprite = c.characterArt;
             foreach(string dialogueSection in c.speech)
             {
                 yield return RunDialogueBox(dialogueSection);
+
+                while(!interact.WasPressedThisFrame())
+                {
+                    yield return new WaitForEndOfFrame();
+                }
             }
         }
 
@@ -232,8 +242,20 @@ public class BJCharacterController : MonoBehaviour
             displayLines.Add(newLine);
 
             int currentWord = 0;
+            float timeSinceLetter = 0;
             for(int i = 0; i < lineLength; i++)
             {
+                timeSinceLetter += Time.deltaTime;
+                float secondPerLetter = 1.0f / lettersPerSecond;
+                Debug.Log($"Seconds/Letter {secondPerLetter}");
+                while(timeSinceLetter < secondPerLetter)
+                {
+                    timeSinceLetter += Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+                
+                timeSinceLetter -= Mathf.Floor(timeSinceLetter / secondPerLetter) * secondPerLetter;
+
                 bool whitespace = false;
                 while(line[i + offset] == ' ')
                 {
@@ -254,8 +276,11 @@ public class BJCharacterController : MonoBehaviour
 
                 for(int a = startLine; a <= endLine; a++)
                 {
+                    dialogueBox.text += displayLines[a];
                     dialogueBox.text += '\n';
                 }
+
+                if(timeSinceLetter > secondPerLetter) continue;
 
                 yield return new WaitForEndOfFrame();
             }
