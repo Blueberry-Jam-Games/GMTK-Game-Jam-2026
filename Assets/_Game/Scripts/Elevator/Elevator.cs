@@ -12,6 +12,9 @@ public class Elevator : MonoBehaviour
     private Transform buttonRoot;
 
     [SerializeField]
+    private Canvas buttonsCanvas;
+
+    [SerializeField]
     private Animator animator;
 
     // list of buttons
@@ -39,6 +42,8 @@ public class Elevator : MonoBehaviour
 
             buttons.Add (eb);
         }
+
+        buttonsCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
     }
 
     private IEnumerator DoElevator ()
