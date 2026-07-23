@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using Unity.Multiplayer.Center.Common.Analytics;
@@ -36,6 +37,7 @@ public class BJCharacterController : MonoBehaviour
     public TextMeshProUGUI dialogueBox;
     public TextMeshProUGUI characterName;
     public Image characterIcon;
+    public int lettersPerSecond = 60;
 
     [Header("Player Locks")]
     public bool enableMovement = true;
@@ -185,9 +187,7 @@ public class BJCharacterController : MonoBehaviour
         dialogueCanvas.enabled = true;
         dialogueBox.text = "";
 
-        characterIcon.sprite = dialogue.CharacterArt;
-
-        characterName.text = dialogue.name;
+        rb.linearVelocity = Vector3.zero;
 
         StartCoroutine(RunInteraction(activeDialogue, callback));
     }
@@ -205,10 +205,134 @@ public class BJCharacterController : MonoBehaviour
 #region Interaction Handeler
     IEnumerator RunInteraction(DialogueSO dialogue, Action callback = null)
     {
-        Debug.Log("RunInteraction");
-        yield return new WaitForSeconds(2f);
+        foreach(CharacterDialogue c in dialogue.dialogues)
+        {
+            characterName.text = c.characterName;
+            characterIcon.sprite = c.characterArt;
+            foreach(string dialogueSection in c.speech)
+            {
+                yield return RunDialogueBox(dialogueSection);
+
+                while(!interact.WasPressedThisFrame())
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+        }
+
         callback?.Invoke();
     }
 
+    IEnumerator RunDialogueBox(string paragraph)
+    {
+        List<string> lines = SplitIntoLines(dialogueBox, paragraph);
+
+        int startLine = 0;
+        int endLine = 0;
+        List<string> displayLines = new List<string>();
+
+        int lineNumber = 0;
+        foreach(string line in lines)
+        {
+            int lineLength = LengthWithoutSpaces(line);
+            int offset = 0;
+
+            string newLine = "";
+
+            displayLines.Add(newLine);
+
+            int currentWord = 0;
+            float timeSinceLetter = 0;
+            for(int i = 0; i < lineLength; i++)
+            {
+                timeSinceLetter += Time.deltaTime;
+                float secondPerLetter = 1.0f / lettersPerSecond;
+                Debug.Log($"Seconds/Letter {secondPerLetter}");
+                while(timeSinceLetter < secondPerLetter)
+                {
+                    timeSinceLetter += Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+                
+                timeSinceLetter -= Mathf.Floor(timeSinceLetter / secondPerLetter) * secondPerLetter;
+
+                bool whitespace = false;
+                while(line[i + offset] == ' ')
+                {
+                    whitespace = true;
+                    offset += 1;
+                    newLine += ' ';
+                }
+                if(whitespace)
+                {
+                    currentWord ++;
+                }
+
+                newLine += line[i + offset];
+
+                displayLines[endLine] = newLine;
+
+                dialogueBox.text = "";
+
+                for(int a = startLine; a <= endLine; a++)
+                {
+                    dialogueBox.text += displayLines[a];
+                    dialogueBox.text += '\n';
+                }
+
+                if(timeSinceLetter > secondPerLetter) continue;
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            endLine ++;
+
+            if(endLine - startLine >= 3)
+            {
+                startLine ++;
+            }
+            
+            lineNumber ++;
+        }
+    }
 #endregion
+
+
+    public static List<string> SplitIntoLines(TMP_Text textMeshPro, string paragraph)
+    {
+        List<string> lines = new List<string>();
+
+        if (string.IsNullOrEmpty(paragraph))
+            return lines;
+
+        // Assign the text to TMP and force an update so textInfo is valid
+        string originalText = textMeshPro.text;
+        textMeshPro.text = paragraph;
+        textMeshPro.ForceMeshUpdate();
+
+        TMP_TextInfo textInfo = textMeshPro.textInfo;
+
+        for (int i = 0; i < textInfo.lineCount; i++)
+        {
+            int firstChar = textInfo.lineInfo[i].firstCharacterIndex;
+            int lastChar = textInfo.lineInfo[i].lastCharacterIndex;
+
+            // Substring of the paragraph that belongs to this line
+            string lineText = paragraph.Substring(firstChar, lastChar - firstChar + 1);
+
+            lines.Add(lineText);
+        }
+
+        // Restore original text (optional)
+        textMeshPro.text = originalText;
+        textMeshPro.ForceMeshUpdate();
+
+        return lines;
+    }
+
+    private int LengthWithoutSpaces(String input)
+    {
+        string withoutSpaces = input.Replace(" ", "");
+        return withoutSpaces.Length;
+    }
 }
