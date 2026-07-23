@@ -918,6 +918,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 207789472047109501, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
+      propertyPath: lettersPerSecond
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 207789472047109501, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
       propertyPath: speakableLayer.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}

@@ -1,4 +1,8 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="io.github.blueberry-jam-games.core.csproj" />
+  <Project Path="io.github.blueberry-jam-games.core.Tests.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="io.github.blueberry-jam-games.core.Editor.Tests.csproj" />
+  <Project Path="io.github.blueberry-jam-games.core.Editor.csproj" />
 </Solution>

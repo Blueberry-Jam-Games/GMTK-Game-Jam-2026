@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ff683893bac9746af2ea0c678c1c78, type: 3}
   m_Name: Dialogue1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
-  CharacterArt: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  name: Bob
-  dialogue:
-  - Hello World
+  dialogues:
+  - characterName: Angry Programer
+    characterArt: {fileID: 21300000, guid: b3cde5f074f9f584fb4bbfaedc07e9ef, type: 3}
+    speech:
+    - Hello world
+    - More speaking
+  - characterName: ASDF
+    characterArt: {fileID: 21300000, guid: 6965315af47329748aaeb1f9c120ca03, type: 3}
+    speech:
+    - New Char spaekign gudfhgvikjzbhv ahvbz kjvba vuk jzc bvz ch gvfm flsdjf fc
+      fdiov sdjfvin fviz n uifv idushvui zuhvz ui bc uid vck bcvhu kzc zoxc vhuzc
+      vz u zvxcuk vuycv zxuy z yuzx gvyz sdguysid fus fjuifgvh kvuh uyh u gu ygcvuyz
+      gvou gyvuz gvbu vgbzfsegyuidf uik hi yzg k ghyu yszdui gyuSDI gvuyi uyzo ui
+      it tyi tgcyuxcg uyi uy yZuif yui
+    - bjnjgviksd fyiukgvs yudckvb
