@@ -19,6 +19,8 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
     private ElevatorDefinitions elevatorDefinitions;
     private List<Elevator> elevators;
 
+    public List<bool> disabledFloors;
+
     public string activeScene;
     public int activeFloor;
 
@@ -40,6 +42,11 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
             elev.Initialize (ee);
             
             elevators.Add (elev);
+        }
+
+        foreach(string s in elevatorDefinitions.levelMap)
+        {
+            disabledFloors.Add(false);
         }
 
         SceneManager.LoadScene (startingFloor, LoadSceneMode.Additive);
@@ -145,5 +152,10 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         
         sceneName = elevatorDefinitions.levelMap[floorNumber];
         return true;
+    }
+
+    public bool FloorDisabled(int floorNumber)
+    {
+        return disabledFloors[floorNumber];
     }
 }

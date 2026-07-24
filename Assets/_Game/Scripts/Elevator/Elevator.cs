@@ -168,20 +168,37 @@ public class Elevator : MonoBehaviour
         }
     }
 
-    public void AddDestination(int floorNumber, ElevatorDirection requestDirection)
+    public enum DestinationResult
+    {
+        SUCCESS,
+        LOCKED,
+        FAILED,
+        ALREADY_PRESSED
+    }
+
+    public DestinationResult AddDestination(int floorNumber, ElevatorDirection requestDirection)
     {
         if (!initialized || !selectedFloors.ContainsKey(floorNumber))
         {
-            return;
+            return DestinationResult.FAILED;
         }
+
+        if(ElevatorManager.Instance.FloorDisabled(floorNumber)) return DestinationResult.LOCKED;
 
         Debug.Log($"Added Destination {floorNumber}");
 
         int requestedFloorIndex = floors.IndexOf(floorNumber);
 
-        if (requestedFloorIndex < 0) return;
+        if (requestedFloorIndex < 0) return DestinationResult.FAILED;
+
+        if(selectedFloors[floorNumber] == ElevatorDirection.NEUTRAL)
+        {
+            return DestinationResult.ALREADY_PRESSED;
+        }
 
         selectedFloors[floorNumber] = requestDirection;
+
+        return DestinationResult.SUCCESS;
     }
 
     private IEnumerator TravelFloors(int destinationFloor)
@@ -262,10 +279,18 @@ public class Elevator : MonoBehaviour
         }
         buttons[floorToButton[currentFloorIndex]].Reset();
         // previousDirection = selectedFloors[currentFloorIndex]; // TODO Change me
-        selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
 
         yield return OpenDoor();
         yield return new WaitForSeconds(doorDwellDuration);
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            foreach(ElevatorButton e in callButtons)
+            {
+                e.Reset();
+            }
+        }
+        buttons[floorToButton[currentFloorIndex]].Reset();
+        selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
         yield return CloseDoor();
 
         upArrowDisplay.sprite = ArrowUpOff;

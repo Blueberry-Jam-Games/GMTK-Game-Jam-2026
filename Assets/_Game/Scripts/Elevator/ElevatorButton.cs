@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class ElevatorButton : MonoBehaviour
 {
@@ -37,8 +38,18 @@ public class ElevatorButton : MonoBehaviour
 
         Debug.Log($"Button {floorMeaning} pressed");
 
-        parent.AddDestination(floorMeaning, requestedDirection);
+        if(parent.AddDestination(floorMeaning, requestedDirection) != Elevator.DestinationResult.SUCCESS)
+        {
+            StartCoroutine(DelayedButtonOff());
+            return;
+        }
         buttonToggle.interactable = false;
+    }
+
+    private IEnumerator DelayedButtonOff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        buttonToggle.SetIsOnWithoutNotify(false);
     }
 
     public void Initialize(Elevator parent, int floor)
