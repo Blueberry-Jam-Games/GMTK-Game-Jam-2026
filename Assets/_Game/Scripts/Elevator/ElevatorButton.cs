@@ -36,10 +36,26 @@ public class ElevatorButton : MonoBehaviour
             return;
         }
 
+        // TODO Button Click Sound
+
         Debug.Log($"Button {floorMeaning} pressed");
 
-        if(parent.AddDestination(floorMeaning, requestedDirection) != Elevator.DestinationResult.SUCCESS)
+        Elevator.DestinationResult result = parent.AddDestination(floorMeaning, requestedDirection);
+
+        if(result != Elevator.DestinationResult.SUCCESS)
         {
+            if(result == Elevator.DestinationResult.LOCKED)
+            {
+                // TODO Sound for locked
+            }
+            else if(result == Elevator.DestinationResult.ALREADY_PRESSED)
+            {
+                // TODO Already Pressed
+            }
+            else if(result == Elevator.DestinationResult.FAILED)
+            {
+                // Failed to add destination
+            }
             StartCoroutine(DelayedButtonOff());
             return;
         }

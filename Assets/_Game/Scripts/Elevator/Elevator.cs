@@ -252,14 +252,16 @@ public class Elevator : MonoBehaviour
             {
                 t.text = number;
             }
+            // TOOD Changing Floor Sound
 
             yield return new WaitForSeconds(secondsPerFloor / 2);
 
             if(validFloor && IsAreaOccupied(occupationCollider))
             {
                 Debug.Log("Change floor");
-                yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);              
+                yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);
                 selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
+                // TODO Change floor sound
                 yield return DoorSequence();
             }
         }
@@ -303,6 +305,7 @@ public class Elevator : MonoBehaviour
 
         if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
         {
+            // TODO Door Opening Sound
             animator.SetBool("OpenDoors", true);
             if(previousDirection == ElevatorDirection.UP)
             {
@@ -325,6 +328,8 @@ public class Elevator : MonoBehaviour
     private IEnumerator CloseDoor()
     {
         if (!doorOpen) yield break;
+
+        // TODO Door Closing Sound
 
         while (true)
         {
