@@ -45,4 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorManager
   elevatorPath: Elevators
+  startingFloor: GroundFloor
   elevatorPrefab: {fileID: 3211887667641779193, guid: 718c605d36410a349bb5d736bdc95719, type: 3}
+  stairwellPrefab: {fileID: 354480474708950334, guid: 7fe832fd2bbe5e447b611153c9d1337e, type: 3}
+  activeScene: 
+  activeFloor: 0

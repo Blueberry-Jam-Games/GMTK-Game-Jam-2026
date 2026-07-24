@@ -7,10 +7,13 @@ public class ElevatorDefinitions : ScriptableObject
     public Vector3 elevatorSize;
     public Vector3 doorSize;
 
+    public Vector3 stairwelSize;
+    public Vector3 stairwellDoorSize;
+
     public List<ElevatorEntry> elevators;
+    public List<StairwellEntry> stairwells;
     public List<string> levelMap;
 }
-
 
 [System.Serializable]
 public struct ElevatorEntry
@@ -19,6 +22,14 @@ public struct ElevatorEntry
     public List<int> floors;
     public DoorSide doorSide;
     public int initialFloor;
+}
+
+[System.Serializable]
+public struct StairwellEntry
+{
+    public Vector3 position;
+    public DoorSide doorSide;
+
 }
 
 [System.Serializable]
