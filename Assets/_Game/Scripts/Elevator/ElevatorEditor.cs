@@ -8,7 +8,7 @@ public class ElevatorEditor : MonoBehaviour
     private string elevatorPath = "Elevators";
 
     [SerializeField]
-    private string floor;
+    private int floor;
 
     private ElevatorDefinitions elevatorDefinitions;
     
@@ -24,13 +24,52 @@ public class ElevatorEditor : MonoBehaviour
         {
             foreach (ElevatorEntry ee in elevatorDefinitions.elevators)
             {
+                Vector3 cubeSize;
+                switch(ee.doorSide)
+                {
+                    case DoorSide.POS_Z:
+                        cubeSize = new Vector3(elevatorDefinitions.elevatorSize.x, elevatorDefinitions.elevatorSize.y, elevatorDefinitions.elevatorSize.z);
+                        break;
+                    case DoorSide.NEG_Z:
+                        cubeSize = new Vector3(elevatorDefinitions.elevatorSize.x, elevatorDefinitions.elevatorSize.y, elevatorDefinitions.elevatorSize.z);
+                        break;
+                    case DoorSide.POS_X:
+                        cubeSize = new Vector3(elevatorDefinitions.elevatorSize.z, elevatorDefinitions.elevatorSize.y, elevatorDefinitions.elevatorSize.x);
+                        break;
+                    case DoorSide.NEG_X:
+                        cubeSize = new Vector3(elevatorDefinitions.elevatorSize.z, elevatorDefinitions.elevatorSize.y, elevatorDefinitions.elevatorSize.x);
+                        break;
+                    default:
+                        cubeSize = new Vector3(elevatorDefinitions.elevatorSize.x, elevatorDefinitions.elevatorSize.y, elevatorDefinitions.elevatorSize.z);
+                        break;
+                }
+
+                Vector3 doorSize;
+                switch(ee.doorSide)
+                {
+                    case DoorSide.POS_Z:
+                        doorSize = new Vector3(elevatorDefinitions.doorSize.x, elevatorDefinitions.doorSize.y, elevatorDefinitions.doorSize.z);
+                        break;
+                    case DoorSide.NEG_Z:
+                        doorSize = new Vector3(elevatorDefinitions.doorSize.x, elevatorDefinitions.doorSize.y, elevatorDefinitions.doorSize.z);
+                        break;
+                    case DoorSide.POS_X:
+                        doorSize = new Vector3(elevatorDefinitions.doorSize.z, elevatorDefinitions.doorSize.y, elevatorDefinitions.doorSize.x);
+                        break;
+                    case DoorSide.NEG_X:
+                        doorSize = new Vector3(elevatorDefinitions.doorSize.z, elevatorDefinitions.doorSize.y, elevatorDefinitions.doorSize.x);
+                        break;
+                    default:
+                        doorSize = new Vector3(elevatorDefinitions.doorSize.x, elevatorDefinitions.doorSize.y, elevatorDefinitions.doorSize.z);
+                        break;
+                }
                 if (ee.floors.Contains (floor))
                 {
                     Gizmos.color = elevator;
-                    Gizmos.DrawCube (ee.position + offsetY, elevatorDefinitions.elevatorSize);
+                    Gizmos.DrawCube (ee.position + offsetY, cubeSize);
 
                     Gizmos.color = door;
-                    Gizmos.DrawCube (ee.position + GetDoorOffset (ee.doorSide) + offsetY, elevatorDefinitions.doorSize);
+                    Gizmos.DrawCube (ee.position + GetDoorOffset (ee.doorSide) + offsetY, doorSize);
                 }
                 else
                 {

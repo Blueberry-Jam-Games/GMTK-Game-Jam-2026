@@ -2,125 +2,253 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+using System.Linq;
+using Unity.Mathematics;
 
 public class Elevator : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject buttonPrefab;
+    public enum ElevatorDirection
+    {
+        UP,
+        NEUTRAL,
+        DOWN,
+        UNCALLED
+    }
 
-    [SerializeField]
-    private Transform buttonRoot;
+    [Header("References")]
+    [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private Transform buttonRoot;
+    [SerializeField] private Canvas buttonsCanvas;
+    [SerializeField] private Animator animator;
+    [SerializeField] private List<ElevatorButton> callButtons;
 
-    [SerializeField]
-    private Canvas buttonsCanvas;
+    
+    [Header("Timing")]
+    [SerializeField] private float secondsPerFloor = 1f;
+    [SerializeField] private float doorAnimationDuration = 1f;
+    [SerializeField] private float doorDwellDuration = 2f;
 
-    [SerializeField]
-    private Animator animator;
-
-    // list of buttons
-    private List<ElevatorButton> buttons;
-    private float speed = 1; // Floors per second
-
-    public float floor = 0.0f; // base 0
-    private Queue<int> destinations;
-    private int calledToFloor = -1;
+    public int currentFloorIndex = 0;
+    // private int calledToFloor = -1;
     private bool doorOpen = true;
+    private readonly List<ElevatorButton> buttons = new();
+    private Dictionary<int, ElevatorDirection> selectedFloors = new();
+    public List<int> floors;
+    [SerializeField] private ElevatorDirection preferredDirection = ElevatorDirection.NEUTRAL;
+
+    private bool initialized = false;
 
     private void Awake ()
     {
-        buttons = new List<ElevatorButton> ();
-        destinations = new Queue<int> ();
+        
     }
 
     private void Start ()
     {
+        animator.SetBool("OpenDoors", true);
         StartCoroutine (DoElevator ());
     }
 
     public void Initialize (ElevatorEntry source)
     {
-        foreach (string floor in source.floors)
+        floors = source.floors;
+        selectedFloors.Clear();
+        preferredDirection = ElevatorDirection.NEUTRAL;
+        currentFloorIndex = 0;
+
+        foreach (int floor in source.floors)
         {
             GameObject newButton = GameObject.Instantiate (buttonPrefab, buttonRoot);
             ElevatorButton eb = newButton.GetComponent<ElevatorButton> ();
             eb.Initialize (this, floor);
 
             buttons.Add (eb);
+            selectedFloors.Add(floor, ElevatorDirection.UNCALLED);
+        }
+
+        foreach(ElevatorButton eb in callButtons)
+        {
+            eb.isCallButton = true;
         }
 
         buttonsCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+
+        initialized = true;
     }
 
     private IEnumerator DoElevator ()
     {
+        yield return new WaitUntil(() => initialized);
+
+        // The elevator begins with its doors open.
+        yield return CloseDoor();
+
         while (true)
         {
-            if (destinations.Count != 0)
+            // Check current floor
+            if(currentFloorIndex >= 0 && selectedFloors[currentFloorIndex] != ElevatorDirection.UNCALLED)
             {
-                Debug.Log ($"Has new destination {destinations.Peek ()}");
-                if (Mathf.Abs (destinations.Peek () - floor) > Mathf.Epsilon && !doorOpen)
+                Debug.Log("Current Floor Called");
+                yield return DoorSequence();
+                continue;
+            }
+
+            if(preferredDirection != ElevatorDirection.UNCALLED)
+            {
+                int nearestDistance = 20000;
+                int nextFloorIndex = -1;
+                foreach(var (selectedFloor, floorstate) in selectedFloors)
                 {
-                    Debug.Log ("Doors closed, moving");
-
-                    floor = Mathf.MoveTowards (floor, destinations.Peek (), speed * Time.deltaTime);
-                }
-                else if (Mathf.Abs (floor - destinations.Peek ()) < Mathf.Epsilon)
-                {
-                    Debug.Log ($"At destination {destinations.Peek ()}, doors opening");
-
-                    buttons[destinations.Peek ()].Reset ();
-
-                    if (calledToFloor == destinations.Peek ())
+                    if(floorstate != ElevatorDirection.UNCALLED)
                     {
-                        yield return OpenDoor ();
-                    }
-                    else
-                    {
-                        yield return BJ.Coroutines.WaitforSeconds (2); // Dwell times
-                    }
+                        int distance = selectedFloor - currentFloorIndex;
 
-                    // Done after that logic
-                    destinations.Dequeue ();
+                        if(Mathf.Abs(selectedFloor - currentFloorIndex) < nearestDistance)
+                        {
+                            nearestDistance = Mathf.Abs(selectedFloor - currentFloorIndex);
+                            nextFloorIndex = selectedFloor;
+
+                            if(selectedFloor > currentFloorIndex)
+                            {
+                                preferredDirection = ElevatorDirection.UP;
+                            }
+                            else
+                            {
+                                preferredDirection = ElevatorDirection.DOWN;
+                            }
+                        }
+                    }
                 }
-                else if (doorOpen)
+
+                if(nextFloorIndex > -1)
                 {
-                    Debug.Log ("Ready to go, closing door");
-                    yield return CloseDoor ();
+                    yield return TravelFloors(nextFloorIndex);
                 }
             }
-            yield return null;
+
+            yield return new WaitForEndOfFrame();
         }
     }
 
-    public void AddDestination (string floor)
+    public void AddDestination(int floorNumber, ElevatorDirection requestDirection)
     {
-        int newDest = 0;
-
-        if (floor.Equals ("G"))
+        if (!initialized || !selectedFloors.ContainsKey(floorNumber))
         {
-            newDest = 0;      
+            return;
+        }
+
+        Debug.Log($"Added Destination {floorNumber}");
+
+        int requestedFloorIndex = floors.IndexOf(floorNumber);
+
+        if (requestedFloorIndex < 0) return;
+
+        selectedFloors[floorNumber] = requestDirection;
+
+        if (requestDirection == ElevatorDirection.NEUTRAL && preferredDirection == ElevatorDirection.NEUTRAL)
+        {
+            if (requestedFloorIndex > currentFloorIndex) 
+            {
+                preferredDirection = ElevatorDirection.UP;
+            }
+            else if (requestedFloorIndex < currentFloorIndex)
+            {
+                preferredDirection = ElevatorDirection.DOWN;
+            }
+        }
+    }
+
+    private IEnumerator TravelFloors(int destinationFloor)
+    {
+        int traversal = destinationFloor - currentFloorIndex;
+        int iteration = Mathf.Abs(traversal);
+
+        if(doorOpen)
+        {
+            yield return new WaitForSeconds(1);
+            yield return CloseDoor();
+        }
+
+        for(int i = 0; i < iteration; i++)
+        {
+            bool validFloor = false;
+            if(traversal < 0) currentFloorIndex --; else currentFloorIndex ++;
+
+            if(selectedFloors.TryGetValue(currentFloorIndex, out ElevatorDirection floorState))
+            {
+                if(floorState == ElevatorDirection.DOWN && preferredDirection == ElevatorDirection.DOWN)
+                {
+                    Debug.Log("Valid floor DOWN");
+                    validFloor = true;
+                }
+                else if(floorState == ElevatorDirection.UP && preferredDirection == ElevatorDirection.UP)
+                {
+                    Debug.Log("Valid floor UP");
+                    validFloor = true;
+                }
+                else if(floorState == ElevatorDirection.NEUTRAL)
+                {
+                    Debug.Log("Valid floor NEUTRAL");
+                    validFloor = true;
+                }
+            }
+
+            yield return new WaitForSeconds(secondsPerFloor);
+
+            if(validFloor) // Add player check here
+            {
+                Debug.Log("Change floor");
+                yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);
+                selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
+                yield return DoorSequence();
+            }
+        }
+
+        preferredDirection = ElevatorDirection.NEUTRAL;
+    }
+
+    private IEnumerator DoorSequence()
+    {
+        Debug.Log("Door Sequence");
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            foreach(ElevatorButton e in callButtons)
+            {
+                e.Reset();
+            }
+        }
+        buttons[currentFloorIndex].Reset();
+        yield return OpenDoor();
+        yield return new WaitForSeconds(doorDwellDuration);
+        selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
+        yield return CloseDoor();
+    }
+
+    private IEnumerator OpenDoor()
+    {
+        if (doorOpen) yield break;
+
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            animator.SetBool("OpenDoors", true);
         }
         else
         {
-            newDest = int.Parse (floor) - 1;
+            Debug.Log("Not Active Floor");
         }
+        yield return new WaitForSeconds(doorAnimationDuration);
 
-        destinations.Enqueue (newDest);
-    }
-
-    private IEnumerator OpenDoor ()
-    {
         doorOpen = true;
-        // play animation
-        animator.Play ("DoorOpen");
-        yield return new WaitForSeconds (1);
     }
 
-    private IEnumerator CloseDoor ()
+    private IEnumerator CloseDoor()
     {
-        // play animation
-        animator.Play ("DoorClose");
-        yield return new WaitForSeconds (1);
+        if (!doorOpen) yield break;
+
+        animator.SetBool("OpenDoors", false);
+        yield return new WaitForSeconds(doorAnimationDuration);
+
         doorOpen = false;
     }
 }
+
