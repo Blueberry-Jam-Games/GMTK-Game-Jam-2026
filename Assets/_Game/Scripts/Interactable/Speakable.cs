@@ -7,14 +7,24 @@ public class Speakable : MonoBehaviour
     public bool speechBubble = false;
     public DialogueSO dialogue;
 
+    public SpriteRenderer commsIndicator;
+
     [SerializeField] private bool ActualState;
+
+    void Start()
+    {
+        commsIndicator.enabled = false;
+    }
 
     void LateUpdate()
     {
         ActualState = speechBubble;
         if(speechBubble)
         {
-            // Visual Code Here
+            commsIndicator.enabled = true;
+        } else
+        {
+            commsIndicator.enabled = false;
         }
         
         speechBubble = false;
