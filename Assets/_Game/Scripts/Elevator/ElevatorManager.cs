@@ -15,11 +15,14 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
 
     [SerializeField]
     private GameObject elevatorPrefab;
+    [SerializeField]
+    private GameObject stairwellPrefab;
 
     private ElevatorDefinitions elevatorDefinitions;
     private List<Elevator> elevators;
 
     public List<bool> disabledFloors;
+    private List<Stairwell> stairwells;
 
     public string activeScene;
     public int activeFloor;
@@ -28,6 +31,7 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
     {
         base.Awake ();
         elevators = new List<Elevator> ();
+        stairwells = new List<Stairwell> ();
         elevatorDefinitions = Resources.Load<ElevatorDefinitions> (elevatorPath);
     }
 
@@ -48,6 +52,16 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         {
             disabledFloors.Add(false);
         }
+        foreach (StairwellEntry se in elevatorDefinitions.stairwells)
+        {
+            GameObject newStairwell = GameObject.Instantiate (stairwellPrefab, this.transform);
+            newStairwell.transform.position = se.position;
+            newStairwell.transform.Rotate (new Vector3 (0, GetStairwellRotation (se.doorSide), 0));
+            Stairwell swell = newStairwell.GetComponent <Stairwell> ();
+            //swell.Initialize (ee);
+            
+            stairwells.Add (swell);
+        }
 
         SceneManager.LoadScene (startingFloor, LoadSceneMode.Additive);
         activeScene = startingFloor;
@@ -67,6 +81,23 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
                 return 0;
             case DoorSide.NEG_Z:
                 return 180;
+            default:
+                return 0;
+        }
+    }
+
+    private float GetStairwellRotation (DoorSide doorside)
+    {
+        switch (doorside)
+        {
+            case DoorSide.POS_X:
+                return 0;
+            case DoorSide.NEG_X:
+                return 180;
+            case DoorSide.POS_Z:
+                return 270;
+            case DoorSide.NEG_Z:
+                return 90;
             default:
                 return 0;
         }
