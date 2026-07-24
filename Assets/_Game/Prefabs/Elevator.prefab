@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 483270662039898913}
   - component: {fileID: 862663577148153742}
   - component: {fileID: 1139688351211175968}
+  - component: {fileID: 2297108211943951558}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -1154,6 +1155,55 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2297108211943951558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211887667641779193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a743747c820c91e47b737c66cafb30e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: io.github.blueberry-jam-games.core::BJ.SoundManager
+  sounds:
+  - name: ElevatorClose
+    clip: {fileID: 8300000, guid: b5045f8ff6a43e547b8e5cd10bf25961, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.7
+    pitch: 1.5
+    loop: 0
+    spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: ElevatorOpen
+    clip: {fileID: 8300000, guid: 2b28ea066d857464ab091bdcc706ce87, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.7
+    pitch: 1.5
+    loop: 0
+    spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Ping
+    clip: {fileID: 8300000, guid: 2bd953b55a861d749a4ba22a652b6a99, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: 1c3b50dfa09623e4c984ebcf5e5d37eb, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &3270116643323899583
 GameObject:
   m_ObjectHideFlags: 0
