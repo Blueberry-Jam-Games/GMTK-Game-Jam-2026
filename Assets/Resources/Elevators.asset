@@ -16,7 +16,7 @@ MonoBehaviour:
   doorSize: {x: 2, y: 2.25, z: 0.04}
   elevators:
   - position: {x: 0, y: 0, z: 0}
-    floors: 0000000001000000020000000300000004000000
+    floors: 00000000010000000200000004000000
     doorSide: 1
   levelMap:
   - GroundFloor

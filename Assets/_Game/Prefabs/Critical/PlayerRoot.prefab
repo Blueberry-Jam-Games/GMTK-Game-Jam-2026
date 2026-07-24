@@ -930,6 +930,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1013097562933740738, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013097562933740738, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -984,6 +988,10 @@ PrefabInstance:
     - target: {fileID: 2688028106851400089, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150480560419784796, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3473687713798844512, guid: 3e172d495e24cc649b8f112dd624485d, type: 3}
       propertyPath: near clip plane

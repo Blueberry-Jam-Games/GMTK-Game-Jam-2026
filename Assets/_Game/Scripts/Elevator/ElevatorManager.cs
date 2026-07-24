@@ -76,6 +76,18 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         if (nextScene == activeScene) yield break;
 
         yield return ChangeFloorSequence(nextScene, floorNumber);
+
+        foreach(Elevator e in elevators)
+        {
+            if(e.floors.Contains(activeFloor))
+            {
+                e.visibleLayer.SetActive(true);
+            }
+            else
+            {
+                e.visibleLayer.SetActive(false);
+            }
+        }
     }
 
     private IEnumerator ChangeFloorSequence(string nextScene, int floorNumber)
@@ -97,6 +109,18 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
 
         Scene loadedScene = SceneManager.GetSceneByName(nextScene);
         if (loadedScene.IsValid()) SceneManager.SetActiveScene(loadedScene);
+
+        foreach(Elevator e in elevators)
+        {
+            if(e.floors.Contains(activeFloor))
+            {
+                e.visibleLayer.SetActive(true);
+            }
+            else
+            {
+                e.visibleLayer.SetActive(false);
+            }
+        }
     }
 
     public bool TryGetFloorName(string sceneName, out int floorNumber)

@@ -39,7 +39,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: elevator_001/root_jnt/l_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_inner_jnt
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -64,7 +64,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: elevator_001/root_jnt/l_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_outer_jnt
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -89,7 +89,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: elevator_001/root_jnt/r_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_inner_jnt
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -114,7 +114,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: elevator_001/root_jnt/r_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_outer_jnt
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -209,7 +209,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: elevator_001/root_jnt/l_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_inner_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -239,7 +239,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: elevator_001/root_jnt/l_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_inner_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -269,7 +269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: elevator_001/root_jnt/l_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_inner_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -299,7 +299,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: elevator_001/root_jnt/l_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_outer_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -329,7 +329,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: elevator_001/root_jnt/l_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_outer_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -359,7 +359,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: elevator_001/root_jnt/l_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/l_door_outer_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -389,7 +389,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: elevator_001/root_jnt/r_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_inner_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -419,7 +419,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: elevator_001/root_jnt/r_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_inner_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -449,7 +449,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: elevator_001/root_jnt/r_door_inner_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_inner_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -479,7 +479,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: elevator_001/root_jnt/r_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_outer_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -509,7 +509,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: elevator_001/root_jnt/r_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_outer_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -539,7 +539,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: elevator_001/root_jnt/r_door_outer_jnt
+    path: VisibleLayer/elevator_001/root_jnt/r_door_outer_jnt
     classID: 4
     script: {fileID: 0}
     flags: 0
