@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BJ;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Data;
 
 public class ElevatorManager : SingletonGameObject<ElevatorManager>
 {
@@ -18,18 +19,18 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
     private ElevatorDefinitions elevatorDefinitions;
     private List<Elevator> elevators;
 
-    private string activeScene;
+    public string activeScene;
+    public int activeFloor;
 
     protected override void Awake ()
     {
         base.Awake ();
         elevators = new List<Elevator> ();
+        elevatorDefinitions = Resources.Load<ElevatorDefinitions> (elevatorPath);
     }
 
     private void Start()
     {
-        elevatorDefinitions = Resources.Load<ElevatorDefinitions> (elevatorPath);
-
         foreach (ElevatorEntry ee in elevatorDefinitions.elevators)
         {
             GameObject newElevator = GameObject.Instantiate (elevatorPrefab, this.transform);
@@ -43,6 +44,8 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
 
         SceneManager.LoadScene (startingFloor, LoadSceneMode.Additive);
         activeScene = startingFloor;
+        TryGetFloorName(startingFloor, out int floorNumber);
+        activeFloor = floorNumber;
     }
 
     private float GetRotation (DoorSide doorside)
@@ -50,45 +53,97 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         switch (doorside)
         {
             case DoorSide.POS_X:
-                return 180;
+                return 90;
             case DoorSide.NEG_X:
                 return 270;
             case DoorSide.POS_Z:
                 return 0;
             case DoorSide.NEG_Z:
-                return 90;
+                return 180;
             default:
                 return 0;
         }
     }
 
-    private void ChangeFloor (string nextFloor)
+    public IEnumerator ChangeFloor(int floorNumber)
     {
-        StartCoroutine (ChangeFloorSequence (nextFloor));
+        if (!TryGetSceneName(floorNumber, out string nextScene))
+        {
+            Debug.LogError($"No scene is mapped to elevator floor '{floorNumber}'.");
+            yield break;
+        }
+
+        if (nextScene == activeScene) yield break;
+
+        yield return ChangeFloorSequence(nextScene, floorNumber);
+
+        foreach(Elevator e in elevators)
+        {
+            if(e.floors.Contains(activeFloor))
+            {
+                e.visibleLayer.SetActive(true);
+            }
+            else
+            {
+                e.visibleLayer.SetActive(false);
+            }
+        }
     }
 
-    private IEnumerator ChangeFloorSequence (string nextFloor)
+    private IEnumerator ChangeFloorSequence(string nextScene, int floorNumber)
     {
-        yield return new WaitForSeconds (1);
+        Scene oldScene = SceneManager.GetSceneByName(activeScene);
 
-        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync (activeScene);
-
-        // start elevator animation
-
-        while (!asyncUnload.isDone)
+        if (oldScene.IsValid() && oldScene.isLoaded)
         {
-            yield return null;
+            AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(oldScene);
+            // Wait for scene to unload
+            while (asyncUnload != null && !asyncUnload.isDone) yield return null;
         }
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync (nextFloor, LoadSceneMode.Additive);
-        activeScene = nextFloor;
+        activeScene = nextScene;
+        activeFloor = floorNumber;
 
-        while (!asyncLoad.isDone)
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
+        while (asyncLoad != null && !asyncLoad.isDone) yield return null;
+
+        Scene loadedScene = SceneManager.GetSceneByName(nextScene);
+        if (loadedScene.IsValid()) SceneManager.SetActiveScene(loadedScene);
+
+        foreach(Elevator e in elevators)
         {
-            yield return null;
+            if(e.floors.Contains(activeFloor))
+            {
+                e.visibleLayer.SetActive(true);
+            }
+            else
+            {
+                e.visibleLayer.SetActive(false);
+            }
+        }
+    }
+
+    public bool TryGetFloorName(string sceneName, out int floorNumber)
+    {
+        for (int i = 0; i < elevatorDefinitions.levelMap.Count; i++)
+        {
+            string map = elevatorDefinitions.levelMap[i];
+            if (map != sceneName) continue;
+
+            floorNumber = i;
+            return true;
         }
 
-        yield return new WaitForSeconds (1);
-        // Elevator doors open
+        floorNumber = -1;
+        return false;
+    }
+
+    private bool TryGetSceneName(int floorNumber, out string sceneName)
+    {
+        sceneName = null;
+        if(floorNumber < 0 || floorNumber >= elevatorDefinitions.levelMap.Count) return false;
+        
+        sceneName = elevatorDefinitions.levelMap[floorNumber];
+        return true;
     }
 }

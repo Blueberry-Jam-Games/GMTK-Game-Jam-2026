@@ -1,54 +1,56 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
-using System;
+using Unity.VisualScripting;
 
 public class ElevatorButton : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI floorText;
+    [SerializeField] private TextMeshProUGUI floorText;
+    [SerializeField] private Toggle buttonToggle;
 
-    [SerializeField]
-    private Toggle buttonToggle;
+    private int floorMeaning = -1;
+    public Elevator parent;
 
-    private string floorMeaning;
-
-    private Elevator parent;
+    public Elevator.ElevatorDirection requestedDirection = Elevator.ElevatorDirection.NEUTRAL;
+    public bool isCallButton = false;
 
     private void Start()
     {
-        buttonToggle.onValueChanged.AddListener (OnToggle);
+        buttonToggle.onValueChanged.AddListener(OnToggle);
     }
 
-    private void Update()
+    private void OnToggle(bool toggle)
     {
-        
-    }
+        if (!toggle) return;
 
-    private void OnToggle (bool toggle)
-    {
-        Debug.Log ($"Button {floorMeaning} pressed");
-        if (!toggle)
+        if (isCallButton && ElevatorManager.Instance.TryGetFloorName(ElevatorManager.Instance.activeScene, out int currentFloor))
         {
-            buttonToggle.isOn = true;
-            // do nothing
+            floorMeaning = currentFloor;
         }
-        else
+
+        if(floorMeaning == -1)
         {
-            parent.AddDestination (floorMeaning);
+            Debug.LogError("Bad floor number");
+            return;
         }
-        // Do something interesting
+
+        Debug.Log($"Button {floorMeaning} pressed");
+
+        parent.AddDestination(floorMeaning, requestedDirection);
+        buttonToggle.interactable = false;
     }
 
-    public void Initialize (Elevator parent, string floor)
+    public void Initialize(Elevator parent, int floor)
     {
-        floorText.text = floor;
         floorMeaning = floor;
+        floorText.text = floor.ToString();
         this.parent = parent;
     }
 
-    public void Reset ()
+    public void Reset()
     {
-        buttonToggle.isOn = false;
+        buttonToggle.interactable = true;
+        buttonToggle.SetIsOnWithoutNotify(false);
     }
 }
