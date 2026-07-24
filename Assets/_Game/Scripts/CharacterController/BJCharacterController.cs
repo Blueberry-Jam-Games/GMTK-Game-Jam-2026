@@ -46,6 +46,9 @@ public class BJCharacterController : MonoBehaviour
 
     public bool inDialogue = false;
 
+    public bool canSkipDialogue = false;
+
+    public bool skippingDialogue = false;
 
     // Internal
     private InputAction movement;
@@ -107,7 +110,7 @@ public class BJCharacterController : MonoBehaviour
             {
                 if(c.TryGetComponent<Speakable>(out Speakable speakable))
                 {
-                    if(Vector3.Distance(speakable.transform.position, transform.position) < nearestNPC)
+                    if(Vector3.Distance(speakable.transform.position, transform.position) < nearestNPC && IsTargetInFrame(c))
                     {
                         nearestNPC = Vector3.Distance(speakable.transform.position, transform.position);
                         nearestNPCSpeakable = speakable;
@@ -142,6 +145,15 @@ public class BJCharacterController : MonoBehaviour
         }
 
         #endregion
+
+        if (canSkipDialogue)
+        {
+            if (interact.WasPressedThisFrame())
+            {
+                skippingDialogue = true;
+                canSkipDialogue = false;
+            }
+        }
     }
 
     void LateUpdate()
@@ -175,6 +187,15 @@ public class BJCharacterController : MonoBehaviour
             rb.linearVelocity = moveDirection;
         }
         #endregion
+    }
+
+    private  bool IsTargetInFrame(Collider col)
+    {
+        // Calculate the 6 planes that make up the camera's viewing frustum
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(head);
+
+        // Check if the collider's bounds intersect or are inside those planes
+        return GeometryUtility.TestPlanesAABB(planes, col.bounds);
     }
 
     private void enterDialogue(DialogueSO dialogue, Action callback = null)
@@ -232,8 +253,13 @@ public class BJCharacterController : MonoBehaviour
         List<string> displayLines = new List<string>();
 
         int lineNumber = 0;
+
+        canSkipDialogue = true;
+        yield return null;
+
         foreach(string line in lines)
         {
+            Debug.Log(line);
             int lineLength = LengthWithoutSpaces(line);
             int offset = 0;
 
@@ -247,12 +273,16 @@ public class BJCharacterController : MonoBehaviour
             {
                 timeSinceLetter += Time.deltaTime;
                 float secondPerLetter = 1.0f / lettersPerSecond;
-                Debug.Log($"Seconds/Letter {secondPerLetter}");
-                while(timeSinceLetter < secondPerLetter)
+                //Debug.Log($"Seconds/Letter {secondPerLetter}");
+                if (!skippingDialogue)
                 {
-                    timeSinceLetter += Time.deltaTime;
-                    yield return new WaitForEndOfFrame();
+                    while(timeSinceLetter < secondPerLetter)
+                    {
+                        timeSinceLetter += Time.deltaTime;
+                        yield return new WaitForEndOfFrame();
+                    }
                 }
+                
                 
                 timeSinceLetter -= Mathf.Floor(timeSinceLetter / secondPerLetter) * secondPerLetter;
 
@@ -294,6 +324,9 @@ public class BJCharacterController : MonoBehaviour
             
             lineNumber ++;
         }
+
+        skippingDialogue = false;
+        canSkipDialogue = false;
     }
 #endregion
 
