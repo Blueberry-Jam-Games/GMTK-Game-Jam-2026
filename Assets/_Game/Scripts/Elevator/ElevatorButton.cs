@@ -44,7 +44,16 @@ public class ElevatorButton : MonoBehaviour
     public void Initialize(Elevator parent, int floor)
     {
         floorMeaning = floor;
-        floorText.text = floor.ToString();
+        int floorActual = floor + 1;
+        if(floorActual > 1)
+        {
+            floorText.text = floorActual.ToString();
+        }
+        else
+        {
+            floorText.text = "G";
+        }
+        
         this.parent = parent;
     }
 

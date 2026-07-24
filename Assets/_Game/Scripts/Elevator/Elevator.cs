@@ -74,8 +74,9 @@ public class Elevator : MonoBehaviour
         currentFloorIndex = 0;
         currentFloorIndex = source.initialFloor;
 
-        foreach (int floor in source.floors)
+        for (int i = source.floors.Count - 1; i >= 0; i--)
         {
+            int floor = source.floors[i];
             GameObject newButton = GameObject.Instantiate (buttonPrefab, buttonRoot);
             ElevatorButton eb = newButton.GetComponent<ElevatorButton> ();
             eb.Initialize (this, floor);
@@ -92,8 +93,9 @@ public class Elevator : MonoBehaviour
 
         buttonsCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 
-        string number = currentFloorIndex.ToString("D2");
-        if(number == "00")
+        int floorAcutal = currentFloorIndex + 1;
+        string number = floorAcutal.ToString("D2");
+        if(number == "01")
         {
             number = "G";
         }
@@ -223,8 +225,9 @@ public class Elevator : MonoBehaviour
 
             yield return new WaitForSeconds(secondsPerFloor / 2);
 
-            string number = currentFloorIndex.ToString("D2");
-            if(number == "00")
+            int floorAcutal = currentFloorIndex + 1;
+            string number = floorAcutal.ToString("D2");
+            if(number == "01")
             {
                 number = "G";
             }
