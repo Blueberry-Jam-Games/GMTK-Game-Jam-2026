@@ -72,6 +72,7 @@ public class Elevator : MonoBehaviour
         selectedFloors.Clear();
         preferredDirection = ElevatorDirection.NEUTRAL;
         currentFloorIndex = 0;
+        currentFloorIndex = source.initialFloor;
 
         foreach (int floor in source.floors)
         {
@@ -120,6 +121,7 @@ public class Elevator : MonoBehaviour
             if(currentFloorIndex >= 0 && selectedFloors[currentFloorIndex] != ElevatorDirection.UNCALLED)
             {
                 Debug.Log("Current Floor Called");
+                previousDirection = selectedFloors[currentFloorIndex];
                 yield return DoorSequence();
                 continue;
             }
@@ -141,10 +143,12 @@ public class Elevator : MonoBehaviour
 
                             if(selectedFloor > currentFloorIndex)
                             {
+                                previousDirection = ElevatorDirection.UP;
                                 preferredDirection = ElevatorDirection.UP;
                             }
                             else
                             {
+                                previousDirection = ElevatorDirection.DOWN;
                                 preferredDirection = ElevatorDirection.DOWN;
                             }
                         }
@@ -153,6 +157,7 @@ public class Elevator : MonoBehaviour
 
                 if(nextFloorIndex > -1)
                 {
+                    Debug.Log($"New Requested Direction {previousDirection}  {nextFloorIndex}");
                     yield return TravelFloors(nextFloorIndex);
                 }
             }
@@ -175,18 +180,6 @@ public class Elevator : MonoBehaviour
         if (requestedFloorIndex < 0) return;
 
         selectedFloors[floorNumber] = requestDirection;
-
-        if (requestDirection == ElevatorDirection.NEUTRAL && preferredDirection == ElevatorDirection.NEUTRAL)
-        {
-            if (requestedFloorIndex > currentFloorIndex) 
-            {
-                preferredDirection = ElevatorDirection.UP;
-            }
-            else if (requestedFloorIndex < currentFloorIndex)
-            {
-                preferredDirection = ElevatorDirection.DOWN;
-            }
-        }
     }
 
     private IEnumerator TravelFloors(int destinationFloor)
@@ -200,6 +193,8 @@ public class Elevator : MonoBehaviour
             yield return CloseDoor();
         }
 
+        Debug.Log("Start Traversal");
+
         for(int i = 0; i < iteration; i++)
         {
             bool validFloor = false;
@@ -209,16 +204,19 @@ public class Elevator : MonoBehaviour
             {
                 if(floorState == ElevatorDirection.DOWN && preferredDirection == ElevatorDirection.DOWN)
                 {
+                    previousDirection = ElevatorDirection.DOWN;
                     Debug.Log("Valid floor DOWN");
                     validFloor = true;
                 }
                 else if(floorState == ElevatorDirection.UP && preferredDirection == ElevatorDirection.UP)
                 {
+                    previousDirection = ElevatorDirection.UP;
                     Debug.Log("Valid floor UP");
                     validFloor = true;
                 }
                 else if(floorState == ElevatorDirection.NEUTRAL)
                 {
+                    Debug.Log("Valid floor Neutral");
                     validFloor = true;
                 }
             }
@@ -245,6 +243,8 @@ public class Elevator : MonoBehaviour
                 yield return DoorSequence();
             }
         }
+
+        Debug.Log("End Traversal");
     }
 
     private IEnumerator DoorSequence()
@@ -258,7 +258,7 @@ public class Elevator : MonoBehaviour
             }
         }
         buttons[floorToButton[currentFloorIndex]].Reset();
-        previousDirection = selectedFloors[currentFloorIndex];
+        // previousDirection = selectedFloors[currentFloorIndex]; // TODO Change me
         selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
 
         yield return OpenDoor();

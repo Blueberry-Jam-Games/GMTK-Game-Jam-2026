@@ -18,6 +18,11 @@ MonoBehaviour:
   - position: {x: 0, y: 0, z: 0}
     floors: 00000000010000000200000004000000
     doorSide: 1
+    initialFloor: 0
+  - position: {x: 0, y: 0, z: 6}
+    floors: 00000000010000000300000004000000
+    doorSide: 3
+    initialFloor: 3
   levelMap:
   - GroundFloor
   - Floor2

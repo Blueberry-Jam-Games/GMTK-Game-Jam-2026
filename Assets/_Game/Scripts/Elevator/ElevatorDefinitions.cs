@@ -18,6 +18,7 @@ public struct ElevatorEntry
     public Vector3 position;
     public List<int> floors;
     public DoorSide doorSide;
+    public int initialFloor;
 }
 
 [System.Serializable]
