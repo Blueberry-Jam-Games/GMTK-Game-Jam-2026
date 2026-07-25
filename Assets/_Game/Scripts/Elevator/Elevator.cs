@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Linq;
 using Unity.Mathematics;
 using TMPro;
+using UnityEditor;
+using BJ;
 
 public class Elevator : MonoBehaviour
 {
@@ -262,6 +264,7 @@ public class Elevator : MonoBehaviour
                 yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);
                 selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
                 // TODO Change floor sound
+                gameObject.GetComponent<SoundManager>().PlaySound("Ping");
                 yield return DoorSequence();
             }
         }
@@ -306,6 +309,7 @@ public class Elevator : MonoBehaviour
         if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
         {
             // TODO Door Opening Sound
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorOpen");
             animator.SetBool("OpenDoors", true);
             if(previousDirection == ElevatorDirection.UP)
             {
@@ -330,7 +334,10 @@ public class Elevator : MonoBehaviour
         if (!doorOpen) yield break;
 
         // TODO Door Closing Sound
-
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorClose");
+        }
         while (true)
         {
             animator.SetBool("OpenDoors", false);

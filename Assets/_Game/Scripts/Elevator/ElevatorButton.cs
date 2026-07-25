@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
 using System.Collections;
+using BJ;
 
 public class ElevatorButton : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class ElevatorButton : MonoBehaviour
         }
 
         // TODO Button Click Sound
+        parent.GetComponent<SoundManager>().PlaySound("Button");
 
         Debug.Log($"Button {floorMeaning} pressed");
 
