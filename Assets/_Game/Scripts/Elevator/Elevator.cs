@@ -57,6 +57,8 @@ public class Elevator : MonoBehaviour
 
     private bool initialized = false;
 
+    private bool musicPlaying = false;
+
     private void Awake ()
     {
         
@@ -67,6 +69,8 @@ public class Elevator : MonoBehaviour
         animator.SetBool("OpenDoors", true);
         StartCoroutine (DoElevator ());
     }
+
+    
 
     public void Initialize (ElevatorEntry source)
     {
@@ -263,7 +267,7 @@ public class Elevator : MonoBehaviour
                 Debug.Log("Change floor");
                 yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);
                 selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
-                // TODO Change floor sound
+                
                 gameObject.GetComponent<SoundManager>().PlaySound("Ping");
                 yield return DoorSequence();
             }
@@ -327,6 +331,11 @@ public class Elevator : MonoBehaviour
         yield return new WaitForSeconds(doorAnimationDuration);
 
         doorOpen = true;
+        if (!musicPlaying)
+        {
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorMusic");
+            musicPlaying = true;
+        }
     }
 
     private IEnumerator CloseDoor()
@@ -360,6 +369,15 @@ public class Elevator : MonoBehaviour
             if (!interrupted)
             {
                 doorOpen = false;
+                if(!musicPlaying && IsAreaOccupied(occupationCollider))
+                {
+                    gameObject.GetComponent<SoundManager>().PlaySound("ElevatorMusic");
+                    musicPlaying = true;
+                }else if(musicPlaying && !IsAreaOccupied(occupationCollider))
+                {
+                    gameObject.GetComponent<SoundManager>().StopSound("ElevatorMusic");
+                    musicPlaying = false;
+                }
                 yield break;
             }
 
