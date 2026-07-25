@@ -1172,7 +1172,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b5045f8ff6a43e547b8e5cd10bf25961, type: 3}
     mixerGroup: {fileID: 0}
     volume: 0.7
-    pitch: 1.5
+    pitch: 1
     loop: 0
     spatialBlend: 0
     playOnAwake: 0
@@ -1181,27 +1181,36 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2b28ea066d857464ab091bdcc706ce87, type: 3}
     mixerGroup: {fileID: 0}
     volume: 0.7
-    pitch: 1.5
+    pitch: 1
     loop: 0
     spatialBlend: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Ping
-    clip: {fileID: 8300000, guid: 2bd953b55a861d749a4ba22a652b6a99, type: 3}
+    clip: {fileID: 8300000, guid: de5fa223beebdcc4295d556a0edd49cc, type: 3}
     mixerGroup: {fileID: 0}
     volume: 1
-    pitch: 1.5
+    pitch: 1
     loop: 0
     spatialBlend: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: Button
-    clip: {fileID: 8300000, guid: 1c3b50dfa09623e4c984ebcf5e5d37eb, type: 3}
+    clip: {fileID: 8300000, guid: 8cb67185a163747439b66211c0e554d4, type: 3}
     mixerGroup: {fileID: 0}
     volume: 1
-    pitch: 1.5
+    pitch: 1
     loop: 0
     spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: ElevatorMusic
+    clip: {fileID: 8300000, guid: 9a1c0461f5209a2458405b74e9cecb51, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    spatialBlend: 1
     playOnAwake: 0
     source: {fileID: 0}
 --- !u!1 &3270116643323899583
