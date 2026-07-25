@@ -20,6 +20,7 @@ public class Interactable : MonoBehaviour
 
         // No matter what
         localRenderer.sharedMaterial = new Material(localRenderer.sharedMaterial);
+        localRenderer.sharedMaterial.SetFloat("_InteractionEnabled", 1);
     }
 
     private void LateUpdate()

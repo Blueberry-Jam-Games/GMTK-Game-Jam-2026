@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: pants_mat
-  m_Shader: {fileID: -6465566751694194690, guid: 702ab7439a44a344cba880115b49f426, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 769fdfe7fc4a302488cf9986955f9585, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -129,14 +129,19 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _InteractionEnabled: 0
+    - _MetalicScalar: 1
     - _Metallic: 0
+    - _MetallicScalar: 1
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Selected: 0
     - _Smoothness: 0
+    - _SmoothnessScalar: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
