@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4735390839709613556}
   m_Layer: 0
   m_Name: ElevatorEditor
-  m_TagString: EditorOnly
+  m_TagString: DebugEditor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorEditor
   elevatorPath: Elevators
-  floor: 
+  floor: 0
+  currentFloor: 

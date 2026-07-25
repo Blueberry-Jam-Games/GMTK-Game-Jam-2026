@@ -63,6 +63,15 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
             stairwells.Add (swell);
         }
 
+        #if UNITY_EDITOR
+        GameObject editor = GameObject.FindWithTag("DebugEditor");
+        if (editor != null)
+        {
+            ElevatorEditor elevedit = editor.GetComponent<ElevatorEditor>();
+            startingFloor = elevedit.currentFloor;
+        }
+        #endif
+
         SceneManager.LoadScene (startingFloor, LoadSceneMode.Additive);
         activeScene = startingFloor;
         TryGetFloorName(startingFloor, out int floorNumber);

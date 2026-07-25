@@ -1,5 +1,7 @@
 #if UNITY_EDITOR
+using BJ;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [ExecuteAlways]
 public class ElevatorEditor : MonoBehaviour
@@ -9,6 +11,22 @@ public class ElevatorEditor : MonoBehaviour
 
     [SerializeField]
     private int floor;
+
+    public string currentFloor;
+
+    private void Start()
+    {
+        if (Application.isPlaying)
+        {
+            if (ElevatorManager.Instance == null)
+            {
+                DontDestroyOnLoad(this.gameObject);
+                currentFloor = SceneManager.GetActiveScene().name;
+
+                LevelLoader.Instance.LoadLevel("ElevatorsMain", "None");
+            }
+        }
+    }
 
     private ElevatorDefinitions elevatorDefinitions;
     
