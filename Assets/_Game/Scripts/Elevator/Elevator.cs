@@ -334,8 +334,10 @@ public class Elevator : MonoBehaviour
         if (!doorOpen) yield break;
 
         // TODO Door Closing Sound
-        gameObject.GetComponent<SoundManager>().PlaySound("ElevatorClose");
-
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorClose");
+        }
         while (true)
         {
             animator.SetBool("OpenDoors", false);
