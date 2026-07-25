@@ -156,6 +156,23 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         }
     }
 
+    public bool StairwellHasFloor (bool up)
+    {
+        if(up)
+        {
+            return TryGetSceneName(activeFloor + 1, out string _);
+        }
+        else
+        {
+            return TryGetSceneName(activeFloor - 1, out string _);
+        }
+    }
+
+    public void StairwellChangeFloor (bool upwards)
+    {
+        StartCoroutine (ChangeFloor(upwards ? activeFloor + 1 : activeFloor - 1));
+    }
+
     public bool TryGetFloorName(string sceneName, out int floorNumber)
     {
         for (int i = 0; i < elevatorDefinitions.levelMap.Count; i++)

@@ -8,11 +8,17 @@ public class Interactable : MonoBehaviour
     public bool Highlighted = false;
     [SerializeField] private bool ActualState;
 
+    [SerializeField]
     private Renderer localRenderer;
 
     private void Start ()
     {
-        localRenderer = GetComponent<Renderer>();
+        if (localRenderer == null)
+        {
+            localRenderer = GetComponent<Renderer>();
+        }
+
+        // No matter what
         localRenderer.sharedMaterial = new Material(localRenderer.sharedMaterial);
     }
 
