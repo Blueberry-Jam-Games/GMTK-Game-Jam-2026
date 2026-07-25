@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -65,30 +66,52 @@ public class Stairwell : MonoBehaviour
         playerMoving = true;
 
         BJCharacterController player = GameObject.FindWithTag("Player").GetComponent<BJCharacterController>();
+        Vector3 playerPosition = player.transform.position;
         player.enableMovement = false;
         yield return null;
-        player.enableMovement = true;
+
+        float distanceStairs1 = Vector3.Distance(playerPosition, upstairsTop.position);
+        float distanceStairs2 = Vector2.Distance(new Vector2(downstairsBottom.position.x, downstairsBottom.position.z), new Vector2(upstairsTop.position.x, upstairsTop.position.z));
+        float distanceStairs3 = Vector3.Distance(downstairsBottom.position, downstairsTop.position);
+
+        float totalDistance = distanceStairs1 + distanceStairs2 + distanceStairs3;
+
+        float distance1Completion = distanceStairs1 / totalDistance;
+        float distance2Completion = distanceStairs2 / totalDistance;
+        float distance3Completion = distanceStairs3 / totalDistance;
 
         player.transform.position = upstairsBottom.position;
 
         localDoor.CloseDoor ();
 
         float progress = 0;
-        while (progress < 1f)
+        while (progress < distance1Completion)
         {
             progress += ProgressIncrease();
-            player.transform.position = Vector3.Lerp(upstairsBottom.position, upstairsTop.position, progress);
+            float actualProgress = progress / distance1Completion;
+            player.transform.position = Vector3.Lerp(playerPosition, upstairsTop.position, actualProgress);
             yield return null;
         }
 
         Debug.Log ("Try Change floor!");
         ElevatorManager.Instance.StairwellChangeFloor(true);
 
-        progress = 0;
+        Vector3 downstairsBottomPositionAltered = downstairsBottom.position;
+        downstairsBottomPositionAltered.y = upstairsTop.position.y;
+
+        while (progress < distance2Completion + distance1Completion)
+        {
+            progress += ProgressIncrease();
+            float actualProgress = (progress - distance1Completion) / distance2Completion;
+            player.transform.position = Vector3.Lerp(upstairsTop.position, downstairsBottomPositionAltered, actualProgress);
+            yield return null;
+        }
+        
         while (progress < 1f)
         {
             progress += ProgressIncrease();
-            player.transform.position = Vector3.Lerp(downstairsBottom.position, downstairsTop.position, progress);
+            float actualProgress = (progress - distance1Completion - distance2Completion) / distance3Completion;
+            player.transform.position = Vector3.Lerp(downstairsBottom.position, downstairsTop.position, actualProgress);
             yield return null;
         }
 
@@ -100,6 +123,7 @@ public class Stairwell : MonoBehaviour
         RefreshAccess();
 
         playerMoving = false;
+        player.enableMovement = true;
     }
 
     private IEnumerator DownStairs ()
@@ -107,29 +131,49 @@ public class Stairwell : MonoBehaviour
         playerMoving = true;
 
         BJCharacterController player = GameObject.FindWithTag("Player").GetComponent<BJCharacterController>();
+        Vector3 playerPosition = player.transform.position;
         player.enableMovement = false;
         yield return null;
-        player.enableMovement = true;
 
-        player.transform.position = downstairsTop.position;
+        float distanceStairs1 = Vector3.Distance(playerPosition, downstairsBottom.position);
+        float distanceStairs2 = Vector2.Distance(new Vector2(downstairsBottom.position.x, downstairsBottom.position.z), new Vector2(upstairsTop.position.x, upstairsTop.position.z));
+        float distanceStairs3 = Vector3.Distance(upstairsTop.position, upstairsBottom.position);
+
+        float totalDistance = distanceStairs1 + distanceStairs2 + distanceStairs3;
+
+        float distance1Completion = distanceStairs1 / totalDistance;
+        float distance2Completion = distanceStairs2 / totalDistance;
+        float distance3Completion = distanceStairs3 / totalDistance;
 
         localDoor.CloseDoor ();
 
         float progress = 0;
-        while (progress < 1f)
+        while (progress < distance1Completion)
         {
             progress += ProgressIncrease();
-            player.transform.position = Vector3.Lerp(downstairsTop.position, downstairsBottom.position, progress);
+            float actualProgress = progress / distance1Completion;
+            player.transform.position = Vector3.Lerp(playerPosition, downstairsBottom.position, actualProgress);
             yield return null;
         }
 
         ElevatorManager.Instance.StairwellChangeFloor(false);
 
-        progress = 0;
-        while (progress < 1f)
+        Vector3 upstairsTopPositionAltered = upstairsTop.position;
+        upstairsTopPositionAltered.y = downstairsBottom.position.y;
+
+        while (progress < distance2Completion + distance1Completion)
         {
             progress += ProgressIncrease();
-            player.transform.position = Vector3.Lerp(upstairsTop.position, upstairsBottom.position, progress);
+            float actualProgress = (progress - distance1Completion) / distance2Completion;
+            player.transform.position = Vector3.Lerp(downstairsBottom.position, upstairsTopPositionAltered, actualProgress);
+            yield return null;
+        }
+
+        while (progress < 1f)
+        {
+            float actualProgress = (progress - distance1Completion - distance2Completion) / distance3Completion;
+            progress += ProgressIncrease();
+            player.transform.position = Vector3.Lerp(upstairsTop.position, upstairsBottom.position, actualProgress);
             yield return null;
         }
 
@@ -141,10 +185,11 @@ public class Stairwell : MonoBehaviour
         RefreshAccess();
 
         playerMoving = false;
+        player.enableMovement = true;
     }
 
     private float ProgressIncrease ()
     {
-        return 1.0f / travelTime * 2 * Time.deltaTime;
+        return 1.0f / travelTime * Time.deltaTime;
     }
 }
