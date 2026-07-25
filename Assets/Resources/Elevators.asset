@@ -17,14 +17,14 @@ MonoBehaviour:
   stairwelSize: {x: 3.7, y: 4.07, z: 2.48}
   stairwellDoorSize: {x: 0.68, y: 1.58, z: 0.25}
   elevators:
-  - position: {x: 6.45, y: 0, z: 0}
+  - position: {x: 5.95, y: 0, z: 11.28}
     floors: 000000000100000002000000040000000500000006000000070000000800000009000000
     doorSide: 1
-    initialFloor: 10
+    initialFloor: 0
   - position: {x: 5.5, y: 0, z: 8.5}
-    floors: 00000000010000000300000004000000
+    floors: 0000000001000000030000000400000009000000
     doorSide: 3
-    initialFloor: 3
+    initialFloor: 9
   stairwells:
   - position: {x: -5.7, y: 0, z: 0.62}
     doorSide: 0

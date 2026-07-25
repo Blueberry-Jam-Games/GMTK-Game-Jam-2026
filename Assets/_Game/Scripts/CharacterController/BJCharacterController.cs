@@ -134,9 +134,16 @@ public class BJCharacterController : MonoBehaviour
                     if(interact.WasPressedThisFrame())
                     {
                         activeDialogue = nearestNPCSpeakable.Interact(out Speakable s);
-                        dialogueEnd += exitDialogue;
-                        dialogueEnd += s.InteractionEnd;
-                        enterDialogue(activeDialogue, dialogueEnd);
+                        if(activeDialogue != null)
+                        {
+                            dialogueEnd += exitDialogue;
+                            dialogueEnd += s.InteractionEnd;
+                            enterDialogue(activeDialogue, dialogueEnd);
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Missing Dialogue Asset");
+                        }
                     }
                 }
             }
