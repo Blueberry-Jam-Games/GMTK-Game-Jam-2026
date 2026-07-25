@@ -219,6 +219,11 @@ public class Elevator : MonoBehaviour
         }
 
         Debug.Log("Start Traversal");
+        if (IsAreaOccupied(occupationCollider))
+        {
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorMoving");
+        }
+        
 
         for(int i = 0; i < iteration; i++)
         {
@@ -267,13 +272,14 @@ public class Elevator : MonoBehaviour
                 Debug.Log("Change floor");
                 yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);
                 selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
-                
+                gameObject.GetComponent<SoundManager>().StopSound("ElevatorMoving");
                 gameObject.GetComponent<SoundManager>().PlaySound("Ping");
                 yield return DoorSequence();
             }
         }
 
         Debug.Log("End Traversal");
+
     }
 
     private IEnumerator DoorSequence()
@@ -312,9 +318,13 @@ public class Elevator : MonoBehaviour
 
         if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
         {
-            // TODO Door Opening Sound
             gameObject.GetComponent<SoundManager>().PlaySound("ElevatorOpen");
             animator.SetBool("OpenDoors", true);
+            if (!musicPlaying)
+            {
+                gameObject.GetComponent<SoundManager>().PlaySound("ElevatorMusic");
+                musicPlaying = true;
+            }
             if(previousDirection == ElevatorDirection.UP)
             {
                 upArrowDisplay.sprite = ArrowUpOn;    
@@ -331,18 +341,13 @@ public class Elevator : MonoBehaviour
         yield return new WaitForSeconds(doorAnimationDuration);
 
         doorOpen = true;
-        if (!musicPlaying)
-        {
-            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorMusic");
-            musicPlaying = true;
-        }
+        
     }
 
     private IEnumerator CloseDoor()
     {
         if (!doorOpen) yield break;
 
-        // TODO Door Closing Sound
         if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
         {
             gameObject.GetComponent<SoundManager>().PlaySound("ElevatorClose");

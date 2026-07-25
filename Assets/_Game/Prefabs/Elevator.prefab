@@ -1212,6 +1212,15 @@ MonoBehaviour:
     spatialBlend: 1
     playOnAwake: 0
     source: {fileID: 0}
+  - name: ElevatorMoving
+    clip: {fileID: 8300000, guid: c242974c158e13744b0a20b2f0e39d6a, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &3270116643323899583
 GameObject:
   m_ObjectHideFlags: 0
