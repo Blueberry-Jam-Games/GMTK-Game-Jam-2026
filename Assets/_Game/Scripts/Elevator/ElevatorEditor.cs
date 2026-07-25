@@ -29,8 +29,9 @@ public class ElevatorEditor : MonoBehaviour
     }
 
     private ElevatorDefinitions elevatorDefinitions;
-    
+
     private readonly Color elevator = new Color (0, 1, 0, 0.25f);
+    private readonly Color stairs = new Color (1, 1, 0, 0.25f);
     private readonly Color door = new Color (0.25f, 0.25f, 0.25f, 0.5f);
     private readonly Color noStop = new Color (1f, 0, 0, 0.25f);
 
@@ -140,7 +141,7 @@ public class ElevatorEditor : MonoBehaviour
                         break;
                 }
 
-                Gizmos.color = elevator;
+                Gizmos.color = stairs;
                 Gizmos.DrawCube (se.position + stariwellOffsetY, cubeSize);
 
                 Gizmos.color = door;
