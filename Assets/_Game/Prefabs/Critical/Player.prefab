@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3470760695959191653}
   - component: {fileID: 312249817124297967}
   - component: {fileID: 207789472047109501}
+  - component: {fileID: 621632713222637824}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -106,8 +107,47 @@ MonoBehaviour:
   mouseYSensitivaty: 0.9
   speed: 3
   invertMouse: 0
+  interactDistance: 10
+  speakingRadius: 7
+  speakableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  crosshairInfo: {fileID: 0}
+  interactableInfoText: 'Interact [e]'
+  speakableInfoText: 'Speak [e]'
+  dialogueCanvas: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  characterName: {fileID: 0}
+  characterIcon: {fileID: 0}
+  lettersPerSecond: 60
   enableMovement: 1
   enableMouse: 1
+  enableInteraction: 1
+  inDialogue: 0
+  canSkipDialogue: 0
+  skippingDialogue: 0
+--- !u!114 &621632713222637824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013097562933740738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a743747c820c91e47b737c66cafb30e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: io.github.blueberry-jam-games.core::BJ.SoundManager
+  sounds:
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: 03bd1397f9629cf448995eccf101fcff, type: 3}
+    mixerGroup: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &3150480560419784796
 GameObject:
   m_ObjectHideFlags: 0
