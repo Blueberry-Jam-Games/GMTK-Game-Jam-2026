@@ -7,6 +7,8 @@ using System.Data;
 
 public class ElevatorManager : SingletonGameObject<ElevatorManager>
 {
+    private readonly string loadReasonElevators = "ELEVATORS";
+
     [SerializeField]
     private string elevatorPath = "Elevators";
 
@@ -63,19 +65,45 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
             stairwells.Add (swell);
         }
 
+        bool editorMode = false;
+
         #if UNITY_EDITOR
         GameObject editor = GameObject.FindWithTag("DebugEditor");
         if (editor != null)
         {
+            editorMode = true;
             ElevatorEditor elevedit = editor.GetComponent<ElevatorEditor>();
             startingFloor = elevedit.currentFloor;
         }
         #endif
 
+        // First, see if we need to hold the screen black for any period of time
+        if(LevelLoader.Instance != null && !editorMode)
+        {
+            LevelLoader.Instance.HoldLevelLoad(loadReasonElevators);
+            GameObject player = GameObject.FindWithTag("Player");
+            BJCharacterController controller = player.GetComponent<BJCharacterController>();
+            controller.enableMovement = false;
+            controller.enableMouse = false;
+            controller.enableInteraction = false;
+            StartCoroutine(LoadReasonClear());
+        }
+
         SceneManager.LoadScene (startingFloor, LoadSceneMode.Additive);
         activeScene = startingFloor;
         TryGetFloorName(startingFloor, out int floorNumber);
         activeFloor = floorNumber;
+    }
+
+    private IEnumerator LoadReasonClear()
+    {
+        yield return BJ.Coroutines.WaitforSeconds(2);
+        LevelLoader.Instance.ResolveLevelLoad(loadReasonElevators);
+        GameObject player = GameObject.FindWithTag("Player");
+        BJCharacterController controller = player.GetComponent<BJCharacterController>();
+        controller.enableMovement = true;
+        controller.enableMouse = true;
+        controller.enableInteraction = true;
     }
 
     private float GetRotation (DoorSide doorside)
