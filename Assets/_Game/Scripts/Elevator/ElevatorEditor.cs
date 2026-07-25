@@ -1,5 +1,7 @@
 #if UNITY_EDITOR
+using BJ;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [ExecuteAlways]
 public class ElevatorEditor : MonoBehaviour
@@ -10,9 +12,26 @@ public class ElevatorEditor : MonoBehaviour
     [SerializeField]
     private int floor;
 
+    public string currentFloor;
+
+    private void Start()
+    {
+        if (Application.isPlaying)
+        {
+            if (ElevatorManager.Instance == null)
+            {
+                DontDestroyOnLoad(this.gameObject);
+                currentFloor = SceneManager.GetActiveScene().name;
+
+                LevelLoader.Instance.LoadLevel("ElevatorsMain", "None");
+            }
+        }
+    }
+
     private ElevatorDefinitions elevatorDefinitions;
-    
+
     private readonly Color elevator = new Color (0, 1, 0, 0.25f);
+    private readonly Color stairs = new Color (1, 1, 0, 0.25f);
     private readonly Color door = new Color (0.25f, 0.25f, 0.25f, 0.5f);
     private readonly Color noStop = new Color (1f, 0, 0, 0.25f);
 
@@ -122,7 +141,7 @@ public class ElevatorEditor : MonoBehaviour
                         break;
                 }
 
-                Gizmos.color = elevator;
+                Gizmos.color = stairs;
                 Gizmos.DrawCube (se.position + stariwellOffsetY, cubeSize);
 
                 Gizmos.color = door;
