@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
+using System.Collections;
+using BJ;
 
 public class ElevatorButton : MonoBehaviour
 {
@@ -35,16 +37,52 @@ public class ElevatorButton : MonoBehaviour
             return;
         }
 
+        // TODO Button Click Sound
+        parent.GetComponent<SoundManager>().PlaySound("Button");
+
         Debug.Log($"Button {floorMeaning} pressed");
 
-        parent.AddDestination(floorMeaning, requestedDirection);
+        Elevator.DestinationResult result = parent.AddDestination(floorMeaning, requestedDirection);
+
+        if(result != Elevator.DestinationResult.SUCCESS)
+        {
+            if(result == Elevator.DestinationResult.LOCKED)
+            {
+                // TODO Sound for locked
+            }
+            else if(result == Elevator.DestinationResult.ALREADY_PRESSED)
+            {
+                // TODO Already Pressed
+            }
+            else if(result == Elevator.DestinationResult.FAILED)
+            {
+                // Failed to add destination
+            }
+            StartCoroutine(DelayedButtonOff());
+            return;
+        }
         buttonToggle.interactable = false;
+    }
+
+    private IEnumerator DelayedButtonOff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        buttonToggle.SetIsOnWithoutNotify(false);
     }
 
     public void Initialize(Elevator parent, int floor)
     {
         floorMeaning = floor;
-        floorText.text = floor.ToString();
+        int floorActual = floor + 1;
+        if(floorActual > 1)
+        {
+            floorText.text = floorActual.ToString();
+        }
+        else
+        {
+            floorText.text = "G";
+        }
+        
         this.parent = parent;
     }
 

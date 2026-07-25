@@ -21,6 +21,7 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
     private ElevatorDefinitions elevatorDefinitions;
     private List<Elevator> elevators;
 
+    public List<bool> disabledFloors;
     private List<Stairwell> stairwells;
 
     public string activeScene;
@@ -47,6 +48,10 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
             elevators.Add (elev);
         }
 
+        foreach(string s in elevatorDefinitions.levelMap)
+        {
+            disabledFloors.Add(false);
+        }
         foreach (StairwellEntry se in elevatorDefinitions.stairwells)
         {
             GameObject newStairwell = GameObject.Instantiate (stairwellPrefab, this.transform);
@@ -195,5 +200,10 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         
         sceneName = elevatorDefinitions.levelMap[floorNumber];
         return true;
+    }
+
+    public bool FloorDisabled(int floorNumber)
+    {
+        return disabledFloors[floorNumber];
     }
 }

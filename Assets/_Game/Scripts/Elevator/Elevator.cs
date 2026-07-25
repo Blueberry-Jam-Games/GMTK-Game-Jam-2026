@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Linq;
 using Unity.Mathematics;
 using TMPro;
+using UnityEditor;
+using BJ;
 
 public class Elevator : MonoBehaviour
 {
@@ -74,8 +76,9 @@ public class Elevator : MonoBehaviour
         currentFloorIndex = 0;
         currentFloorIndex = source.initialFloor;
 
-        foreach (int floor in source.floors)
+        for (int i = source.floors.Count - 1; i >= 0; i--)
         {
+            int floor = source.floors[i];
             GameObject newButton = GameObject.Instantiate (buttonPrefab, buttonRoot);
             ElevatorButton eb = newButton.GetComponent<ElevatorButton> ();
             eb.Initialize (this, floor);
@@ -92,8 +95,9 @@ public class Elevator : MonoBehaviour
 
         buttonsCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 
-        string number = currentFloorIndex.ToString("D2");
-        if(number == "00")
+        int floorAcutal = currentFloorIndex + 1;
+        string number = floorAcutal.ToString("D2");
+        if(number == "01")
         {
             number = "G";
         }
@@ -166,20 +170,37 @@ public class Elevator : MonoBehaviour
         }
     }
 
-    public void AddDestination(int floorNumber, ElevatorDirection requestDirection)
+    public enum DestinationResult
+    {
+        SUCCESS,
+        LOCKED,
+        FAILED,
+        ALREADY_PRESSED
+    }
+
+    public DestinationResult AddDestination(int floorNumber, ElevatorDirection requestDirection)
     {
         if (!initialized || !selectedFloors.ContainsKey(floorNumber))
         {
-            return;
+            return DestinationResult.FAILED;
         }
+
+        if(ElevatorManager.Instance.FloorDisabled(floorNumber)) return DestinationResult.LOCKED;
 
         Debug.Log($"Added Destination {floorNumber}");
 
         int requestedFloorIndex = floors.IndexOf(floorNumber);
 
-        if (requestedFloorIndex < 0) return;
+        if (requestedFloorIndex < 0) return DestinationResult.FAILED;
+
+        if(selectedFloors[floorNumber] == ElevatorDirection.NEUTRAL)
+        {
+            return DestinationResult.ALREADY_PRESSED;
+        }
 
         selectedFloors[floorNumber] = requestDirection;
+
+        return DestinationResult.SUCCESS;
     }
 
     private IEnumerator TravelFloors(int destinationFloor)
@@ -223,8 +244,9 @@ public class Elevator : MonoBehaviour
 
             yield return new WaitForSeconds(secondsPerFloor / 2);
 
-            string number = currentFloorIndex.ToString("D2");
-            if(number == "00")
+            int floorAcutal = currentFloorIndex + 1;
+            string number = floorAcutal.ToString("D2");
+            if(number == "01")
             {
                 number = "G";
             }
@@ -232,14 +254,17 @@ public class Elevator : MonoBehaviour
             {
                 t.text = number;
             }
+            // TOOD Changing Floor Sound
 
             yield return new WaitForSeconds(secondsPerFloor / 2);
 
             if(validFloor && IsAreaOccupied(occupationCollider))
             {
                 Debug.Log("Change floor");
-                yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);              
+                yield return ElevatorManager.Instance.ChangeFloor(currentFloorIndex);
                 selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
+                // TODO Change floor sound
+                gameObject.GetComponent<SoundManager>().PlaySound("Ping");
                 yield return DoorSequence();
             }
         }
@@ -259,10 +284,18 @@ public class Elevator : MonoBehaviour
         }
         buttons[floorToButton[currentFloorIndex]].Reset();
         // previousDirection = selectedFloors[currentFloorIndex]; // TODO Change me
-        selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
 
         yield return OpenDoor();
         yield return new WaitForSeconds(doorDwellDuration);
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            foreach(ElevatorButton e in callButtons)
+            {
+                e.Reset();
+            }
+        }
+        buttons[floorToButton[currentFloorIndex]].Reset();
+        selectedFloors[currentFloorIndex] = ElevatorDirection.UNCALLED;
         yield return CloseDoor();
 
         upArrowDisplay.sprite = ArrowUpOff;
@@ -275,6 +308,8 @@ public class Elevator : MonoBehaviour
 
         if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
         {
+            // TODO Door Opening Sound
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorOpen");
             animator.SetBool("OpenDoors", true);
             if(previousDirection == ElevatorDirection.UP)
             {
@@ -298,6 +333,11 @@ public class Elevator : MonoBehaviour
     {
         if (!doorOpen) yield break;
 
+        // TODO Door Closing Sound
+        if(currentFloorIndex == ElevatorManager.Instance.activeFloor)
+        {
+            gameObject.GetComponent<SoundManager>().PlaySound("ElevatorClose");
+        }
         while (true)
         {
             animator.SetBool("OpenDoors", false);
