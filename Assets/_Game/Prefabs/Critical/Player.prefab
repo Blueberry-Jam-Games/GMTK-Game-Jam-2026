@@ -141,8 +141,8 @@ MonoBehaviour:
   sounds:
   - name: Footsteps
     clip: {fileID: 8300000, guid: 03bd1397f9629cf448995eccf101fcff, type: 3}
-    mixerGroup: {fileID: 0}
-    volume: 0.25
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
+    volume: 0.2
     pitch: 1
     loop: 1
     spatialBlend: 0

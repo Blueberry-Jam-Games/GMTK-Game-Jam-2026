@@ -1169,7 +1169,7 @@ MonoBehaviour:
   sounds:
   - name: ElevatorClose
     clip: {fileID: 8300000, guid: b5045f8ff6a43e547b8e5cd10bf25961, type: 3}
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 0.7
     pitch: 1
     loop: 0
@@ -1178,7 +1178,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ElevatorOpen
     clip: {fileID: 8300000, guid: 2b28ea066d857464ab091bdcc706ce87, type: 3}
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 0.7
     pitch: 1
     loop: 0
@@ -1187,7 +1187,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ping
     clip: {fileID: 8300000, guid: de5fa223beebdcc4295d556a0edd49cc, type: 3}
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 1
     pitch: 1
     loop: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Button
     clip: {fileID: 8300000, guid: 8cb67185a163747439b66211c0e554d4, type: 3}
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 1
     pitch: 1
     loop: 0
@@ -1205,7 +1205,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ElevatorMusic
     clip: {fileID: 8300000, guid: 9a1c0461f5209a2458405b74e9cecb51, type: 3}
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 2399156473673693343, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 0.6
     pitch: 1
     loop: 1
@@ -1213,8 +1213,8 @@ MonoBehaviour:
     playOnAwake: 0
     source: {fileID: 0}
   - name: ElevatorMoving
-    clip: {fileID: 8300000, guid: c242974c158e13744b0a20b2f0e39d6a, type: 3}
-    mixerGroup: {fileID: 0}
+    clip: {fileID: 8300000, guid: df7c8263b24beac4d8f0e2347d2c1201, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 1
     pitch: 1
     loop: 0
