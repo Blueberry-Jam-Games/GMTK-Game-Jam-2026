@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb567cdfda1d11947bd812aa36b00ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorToggle
-  doorInteraction: {fileID: 479582197296044377}
+  doorInteraction: {fileID: 419083075608806570}
 --- !u!95 &7717127050545978874
 Animator:
   serializedVersion: 7
@@ -1422,7 +1422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1460,29 +1460,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: stairwell_001
       objectReference: {fileID: 0}
+    - target: {fileID: 2213215228758945319, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
+      propertyPath: m_Name
+      value: middle_door_grp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981656712576120129, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -2964430757380704400, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8925959385124729880, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7130000657579675518}
-    - targetCorrespondingSourceObject: {fileID: -2964430757380704400, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
+      addedObject: {fileID: 1196477939998110859}
+    - targetCorrespondingSourceObject: {fileID: 8925959385124729880, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 479582197296044377}
+      addedObject: {fileID: 419083075608806570}
   m_SourcePrefab: {fileID: 100100000, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
---- !u!1 &1514617706833957185 stripped
+--- !u!1 &4037012994698383913 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -2964430757380704400, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8925959385124729880, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
   m_PrefabInstance: {fileID: 4889001719336166961}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7130000657579675518
+--- !u!65 &1196477939998110859
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514617706833957185}
+  m_GameObject: {fileID: 4037012994698383913}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1495,15 +1503,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 1.58, z: 0.65}
-  m_Center: {x: 0, y: 0.78, z: -0.32}
---- !u!114 &479582197296044377
+  m_Size: {x: 0.04, y: 1.57, z: 0.65}
+  m_Center: {x: -0.022, y: 0.79, z: -0.32}
+--- !u!114 &419083075608806570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514617706833957185}
+  m_GameObject: {fileID: 4037012994698383913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1c6add7b2ef51f4397628398efddd24, type: 3}
@@ -1511,14 +1519,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   Highlighted: 0
   ActualState: 0
-  localRenderer: {fileID: 7190992509090594631}
+  localRenderer: {fileID: 7690390949218505584}
 --- !u!4 &4923419917487899098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
   m_PrefabInstance: {fileID: 4889001719336166961}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &7190992509090594631 stripped
+--- !u!137 &7690390949218505584 stripped
 SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6912268142507419274, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2981656712576120129, guid: efb5cbad9dda41743a14de9338d91fc9, type: 3}
   m_PrefabInstance: {fileID: 4889001719336166961}
   m_PrefabAsset: {fileID: 0}
