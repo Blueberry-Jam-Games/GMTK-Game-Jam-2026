@@ -8153,8 +8153,48 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5945255989451415724, guid: 95fb8c6eedf722e408e66160f636829f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1974428985}
+    - targetCorrespondingSourceObject: {fileID: 5945255989451415724, guid: 95fb8c6eedf722e408e66160f636829f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1974428984}
   m_SourcePrefab: {fileID: 100100000, guid: 95fb8c6eedf722e408e66160f636829f, type: 3}
+--- !u!1 &1974428983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5945255989451415724, guid: 95fb8c6eedf722e408e66160f636829f, type: 3}
+  m_PrefabInstance: {fileID: 1974428982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1974428984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974428983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a208eb2b8c4b4a4c818e73a21599a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectable
+  collectionName: My Mug
+  destroyOnSelect: 0
+--- !u!114 &1974428985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974428983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c6add7b2ef51f4397628398efddd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  Highlighted: 0
+  ActualState: 0
+  localRenderer: {fileID: 0}
 --- !u!1 &1975482004
 GameObject:
   m_ObjectHideFlags: 0
