@@ -769,7 +769,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   Highlighted: 0
   ActualState: 0
-  localRenderer: {fileID: 0}
 --- !u!1001 &1186221323
 PrefabInstance:
   m_ObjectHideFlags: 0
