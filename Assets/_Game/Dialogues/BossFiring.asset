@@ -36,7 +36,7 @@ MonoBehaviour:
   - characterName: HR Meghan
     characterArt: {fileID: 21300000, guid: f44577708d38d0840bbaa538ca1642ca, type: 3}
     speech:
-    - "If you\u2019re still around in <time>, they will promptly escort you downstairs. "
+    - "If you\u2019re still around in 10 minutes, they will promptly escort you downstairs. "
   - characterName: CEO Lisa
     characterArt: {fileID: 21300000, guid: fdbc2aae618edb045be518aaa8582daa, type: 3}
     speech:
