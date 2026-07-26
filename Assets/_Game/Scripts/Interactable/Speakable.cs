@@ -11,18 +11,26 @@ public class Speakable : MonoBehaviour
 
     [SerializeField] private bool ActualState;
 
+    public bool active = true;
+
     void Start()
     {
         commsIndicator.enabled = false;
+        if (dialogue == null)
+        {
+            active = false;
+        }
     }
 
     void LateUpdate()
     {
         ActualState = speechBubble;
+
         if(speechBubble)
         {
             commsIndicator.enabled = true;
-        } else
+        }
+        else
         {
             commsIndicator.enabled = false;
         }

@@ -113,10 +113,13 @@ public class BJCharacterController : MonoBehaviour
             {
                 if(c.TryGetComponent<Speakable>(out Speakable speakable))
                 {
-                    if(Vector3.Distance(speakable.transform.position, transform.position) < nearestNPC && IsTargetInFrame(c))
+                    if (speakable.active)
                     {
-                        nearestNPC = Vector3.Distance(speakable.transform.position, transform.position);
-                        nearestNPCSpeakable = speakable;
+                        if(Vector3.Distance(speakable.transform.position, transform.position) < nearestNPC && IsTargetInFrame(c))
+                        {
+                            nearestNPC = Vector3.Distance(speakable.transform.position, transform.position);
+                            nearestNPCSpeakable = speakable;
+                        }
                     }
                 }
             }
