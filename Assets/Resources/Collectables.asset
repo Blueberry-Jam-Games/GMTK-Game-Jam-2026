@@ -31,6 +31,9 @@ MonoBehaviour:
   - itemName: Action Figure 2
     pointValue: 300
     collected: 0
-  - itemName: IT Laptop
+  - itemName: Return IT Laptop
+    pointValue: 500
+    collected: 0
+  - itemName: Return Keycard
     pointValue: 500
     collected: 0

@@ -19,6 +19,6 @@ MonoBehaviour:
     - "Do you know why I was let go? They wouldn\u2019t say anything other than the
       usual corporate jargon."
   - characterName: Coworker
-    characterArt: {fileID: 21300000, guid: 794dd41368b2b7f4bb1928c2475f7e63, type: 3}
+    characterArt: {fileID: 21300000, guid: b21dbbc927f2041459cd9b292e8a5e83, type: 3}
     speech:
     - "Nope, I haven\u2019t heard anything. Sorry."
