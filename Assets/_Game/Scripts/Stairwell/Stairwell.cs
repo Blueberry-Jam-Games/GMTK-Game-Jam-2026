@@ -1,7 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
+using UnityEngine.SceneManagement;
 
 public class Stairwell : MonoBehaviour
 {
@@ -36,6 +35,13 @@ public class Stairwell : MonoBehaviour
         downTrigger.OnInteraction += DownTriggerEvent;
         localDoor = GetComponent<DoorToggle>();
 
+        RefreshAccess();
+
+        SceneManager.sceneLoaded += SceneLoaded;
+    }
+
+    private void SceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         RefreshAccess();
     }
 
