@@ -94,6 +94,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 766409288dec6d2429a5c708a9ff45fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9195081910696764969}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 766409288dec6d2429a5c708a9ff45fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9065797795776951927}
   m_SourcePrefab: {fileID: 100100000, guid: 766409288dec6d2429a5c708a9ff45fa, type: 3}
 --- !u!1 &5989277850404664177 stripped
 GameObject:
@@ -135,6 +138,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.02, z: 0.07}
   m_Center: {x: 0, y: 0, z: -0.04}
+--- !u!114 &9065797795776951927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989277850404664177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ca3fd9bb837af4cbd13db6492485c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndGameDoors
 --- !u!4 &6365240851455306187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 766409288dec6d2429a5c708a9ff45fa, type: 3}
