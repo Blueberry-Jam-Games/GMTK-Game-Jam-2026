@@ -1322,13 +1322,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 961739749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14a8ed93bdcf0204aacd8c77701b6947, type: 3}
+  m_Script: {fileID: 11500000, guid: 9604070260b208240bf13656432d4341, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TitleScreen
-  playButton: {fileID: 0}
-  creditsButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  textInEffect: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::CreditsScreen
+  mainMenu: {fileID: 1773482251}
 --- !u!1 &1130624700
 GameObject:
   m_ObjectHideFlags: 0
