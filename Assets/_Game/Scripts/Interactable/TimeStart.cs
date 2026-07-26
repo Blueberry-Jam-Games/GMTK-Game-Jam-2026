@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class TimeStart : MonoBehaviour
 {
-    bool converse;
+    [SerializeField] private GameObject blockerRoot;
+
+    bool talked = false;
 
     private void Start()
     {
@@ -11,6 +13,14 @@ public class TimeStart : MonoBehaviour
 
     private void CEOConversationEnded()
     {
-        
+        if (!talked)
+        {
+            talked = true;
+            blockerRoot.SetActive(false);
+            GameObject timer = GameObject.FindWithTag("Clock");
+            TimeScript ts = timer.GetComponent<TimeScript>();
+
+            ts.StartTime();
+        }        
     }
 }

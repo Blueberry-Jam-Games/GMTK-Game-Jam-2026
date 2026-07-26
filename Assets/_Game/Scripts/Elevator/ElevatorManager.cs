@@ -93,6 +93,18 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         activeScene = startingFloor;
         TryGetFloorName(startingFloor, out int floorNumber);
         activeFloor = floorNumber;
+
+        foreach(Elevator e in elevators)
+        {
+            if(e.floors.Contains(activeFloor))
+            {
+                e.visibleLayer.SetActive(true);
+            }
+            else
+            {
+                e.visibleLayer.SetActive(false);
+            }
+        }
     }
 
     public void Reset()
