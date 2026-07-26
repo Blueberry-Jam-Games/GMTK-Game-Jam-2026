@@ -16,12 +16,22 @@ public class TitleScreen : MonoBehaviour
 
     private bool levelLoading = false;
 
+    static bool runOnce = false;
+
     private void Start()
     {
         playButton.onClick.AddListener(PlayButtonPressed);
-        LevelTransitionEffect.Templates.FadeTransition("FadeBlack", 1.0f, Color.black, false, Color.black, Color.black);
 
-        LevelLoader.Instance.RegisterTransition("textIn", textInEffect);
+        if(!runOnce)
+        {
+            runOnce = true;
+            LevelTransitionEffect.Templates.FadeTransition("FadeBlack", 1.0f, Color.black, false, Color.black, Color.black);
+            LevelLoader.Instance.RegisterTransition("textIn", textInEffect);
+        }
+        else
+        {
+            Destroy(textInEffect.gameObject);   
+        }
 
         quitButton.onClick.AddListener(Quit);
 
