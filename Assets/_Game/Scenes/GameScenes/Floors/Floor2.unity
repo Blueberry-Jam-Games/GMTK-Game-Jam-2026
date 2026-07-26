@@ -17713,7 +17713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
   collectionName: IT Laptop
-  destroyOnSelect: 0
+  destroyOnSelect: 1
 --- !u!114 &1796491988
 MonoBehaviour:
   m_ObjectHideFlags: 0
