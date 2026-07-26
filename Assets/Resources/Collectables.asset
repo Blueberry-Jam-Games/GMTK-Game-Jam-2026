@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c83fd36f1a2d0840acfa84ed48ec007, type: 3}
   m_Name: Collectables
   m_EditorClassIdentifier: Assembly-CSharp::CollectablesDefinitions
-  collectables: []
+  collectables:
+  - itemName: A thing
+    pointValue: 100
+    collected: 1
+  - itemName: A person
+    pointValue: 77
+    collected: 0
+  - itemName: A place or smt
+    pointValue: 1111
+    collected: 1
