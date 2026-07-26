@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogues:
   - characterName: Mailman
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: 7067ea71be571814ea2b6bc6dd90172c, type: 3}
     speech:
     - "Coming back to fight me agai\u2014a box? AHAHAHAHA!!"
   - characterName: You
@@ -22,7 +22,7 @@ MonoBehaviour:
     speech:
     - "\u2026 Shut up."
   - characterName: Mailman
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: 7067ea71be571814ea2b6bc6dd90172c, type: 3}
     speech:
     - Nah, that sucks, though. The job market is rough.
     - " I\u2019d say good luck but uh\u2026 yeah. Have fun wherever you end up."
