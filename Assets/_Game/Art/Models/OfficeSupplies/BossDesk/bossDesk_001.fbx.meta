@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 518d3556857616442971bdda040c6683
+guid: 2369a5451e27d674aa38065b0cafc771
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable: []
@@ -7,8 +7,68 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: d713cf4672c934741bc560f1c63a3d39, type: 2}
+      name: bossDesk_drawer_handles_mat
+    second: {fileID: 2100000, guid: b6d79af0b04128a4d8c3fea94cc67c26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bossDesk_drawer_mat
+    second: {fileID: 2100000, guid: f1cd544203ccd7d4bb93176defcb312c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: desk_mat
+    second: {fileID: 2100000, guid: f09486508ad638f4e87784248213c6d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: keyboard_mat
+    second: {fileID: 2100000, guid: 44fe051a2b7915c49831617258378b35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: monitorBody_mat
+    second: {fileID: 2100000, guid: b9abd071e2d563e408bd7940658796e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: monitorScreen_mat
+    second: {fileID: 2100000, guid: 543558ebc8a242746b9b6584e8fa7ade, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: monitorStand_mat
+    second: {fileID: 2100000, guid: f857b3c3a5b3a674ea5d85ad5edb345a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mouseWheel_mat
+    second: {fileID: 2100000, guid: 7eb4ac048ef94ed468bba13ca5c8f3f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mouse_mat
+    second: {fileID: 2100000, guid: 6c905f149c42ffa4b86c4dc6934a7b69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paperHolder_mat
+    second: {fileID: 2100000, guid: cfafcfca2959568419c00cd1af1d3870, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paperHolder_papers_mat
+    second: {fileID: 2100000, guid: c8fa10c3f01445e438b55515ee4875cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: securityDuck_Sunglasses_mat
+    second: {fileID: 2100000, guid: a69b6dd1e59885048b6725880204c6c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: securityDuck_mat
+    second: {fileID: 2100000, guid: e3fe9b63e4e914b4da1929b225fc586e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,7 +99,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -97,7 +157,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.015
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
