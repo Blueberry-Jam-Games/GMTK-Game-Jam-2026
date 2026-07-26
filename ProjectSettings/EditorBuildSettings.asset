@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/GameScenes/ResultsScreen.unity
     guid: 194d0d664954a7541b75295d744d9498
   - enabled: 1
+    path: Assets/_Game/Scenes/GameScenes/CreditsScreen.unity
+    guid: b4960c9c3bf65234fb5474e5f83e06ca
+  - enabled: 1
     path: Assets/_Game/Scenes/GameScenes/Floors/GroundFloor.unity
     guid: 4e47b0dfc4c941443a55a5a08314b54b
   - enabled: 1

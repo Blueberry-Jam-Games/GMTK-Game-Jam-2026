@@ -131,9 +131,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 5954178551858262704, guid: 2e0d7169c81d66841b5c91544f364aee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7383206085982166048, guid: 2e0d7169c81d66841b5c91544f364aee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8736840581771153409, guid: 2e0d7169c81d66841b5c91544f364aee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -188,10 +192,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4990308442976473167, guid: 71f67f0cb0511614b833e46dfe98fe03, type: 3}
-      propertyPath: startingFloor
-      value: Floor8
-      objectReference: {fileID: 0}
     - target: {fileID: 7716205148280120943, guid: 71f67f0cb0511614b833e46dfe98fe03, type: 3}
       propertyPath: m_Name
       value: ElevatorManager

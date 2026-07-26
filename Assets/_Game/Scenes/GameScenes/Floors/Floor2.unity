@@ -15580,6 +15580,103 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1001 &1796491985
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4697539854529546452, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_Name
+      value: Laptop (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.566624
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0265303
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2515509
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.026336683
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.99965316
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -183.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073975085140934460, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4697539854529546452, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1796491988}
+    - targetCorrespondingSourceObject: {fileID: 4697539854529546452, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1796491987}
+  m_SourcePrefab: {fileID: 100100000, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+--- !u!1 &1796491986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4697539854529546452, guid: f0d80ccc0069fc741831d9d3a164ced4, type: 3}
+  m_PrefabInstance: {fileID: 1796491985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1796491987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796491986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a208eb2b8c4b4a4c818e73a21599a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectable
+  collectionName: IT Laptop
+  destroyOnSelect: 0
+--- !u!114 &1796491988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796491986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c6add7b2ef51f4397628398efddd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  Highlighted: 0
+  ActualState: 0
+  localRenderer: {fileID: 0}
 --- !u!1001 &1799928458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17941,3 +18038,4 @@ SceneRoots:
   - {fileID: 1534528520}
   - {fileID: 1092740230}
   - {fileID: 562399339}
+  - {fileID: 1796491985}

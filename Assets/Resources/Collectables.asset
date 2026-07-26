@@ -22,3 +22,24 @@ MonoBehaviour:
   - itemName: A place or smt
     pointValue: 1111
     collected: 1
+  - itemName: Severance Package
+    pointValue: 200
+    collected: 0
+  - itemName: Action Figure 1
+    pointValue: 100
+    collected: 0
+  - itemName: My Cat Picture
+    pointValue: 100
+    collected: 0
+  - itemName: My Dog Picture
+    pointValue: 100
+    collected: 0
+  - itemName: My Mug
+    pointValue: 250
+    collected: 0
+  - itemName: Action Figure 2
+    pointValue: 300
+    collected: 0
+  - itemName: IT Laptop
+    pointValue: 500
+    collected: 0

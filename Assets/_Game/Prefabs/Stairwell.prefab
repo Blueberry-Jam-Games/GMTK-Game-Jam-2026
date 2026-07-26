@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1529642128622016487}
   - component: {fileID: 766031030775634440}
   - component: {fileID: 7717127050545978874}
+  - component: {fileID: 5726318947855477501}
   m_Layer: 0
   m_Name: Stairwell
   m_TagString: Untagged
@@ -93,6 +94,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5726318947855477501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354480474708950334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a743747c820c91e47b737c66cafb30e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: io.github.blueberry-jam-games.core::BJ.SoundManager
+  sounds:
+  - name: DoorSound
+    clip: {fileID: 8300000, guid: 6bf0b2168fd9c4d4683a39289191d70a, type: 3}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &632328516209586216
 GameObject:
   m_ObjectHideFlags: 0

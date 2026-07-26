@@ -148,6 +148,15 @@ MonoBehaviour:
     spatialBlend: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: BackgroundNoise
+    clip: {fileID: 8300000, guid: 7be5e12a68caf1c44aca9aad8ba95f3d, type: 3}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    spatialBlend: 0
+    playOnAwake: 1
+    source: {fileID: 0}
 --- !u!1 &3150480560419784796
 GameObject:
   m_ObjectHideFlags: 0
