@@ -49,7 +49,9 @@ public class TitleScreen : MonoBehaviour
 
     private void Quit()
     {
+#if !UNITY_WEBGL
         Application.Quit();
+#endif
     }
 
     private void Credits()

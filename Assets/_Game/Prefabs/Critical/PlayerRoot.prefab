@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Times Up
+  m_text: Time's Up
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
