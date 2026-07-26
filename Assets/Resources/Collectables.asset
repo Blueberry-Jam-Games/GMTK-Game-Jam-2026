@@ -13,15 +13,6 @@ MonoBehaviour:
   m_Name: Collectables
   m_EditorClassIdentifier: Assembly-CSharp::CollectablesDefinitions
   collectables:
-  - itemName: A thing
-    pointValue: 100
-    collected: 1
-  - itemName: A person
-    pointValue: 77
-    collected: 0
-  - itemName: A place or smt
-    pointValue: 1111
-    collected: 1
   - itemName: Severance Package
     pointValue: 200
     collected: 0
