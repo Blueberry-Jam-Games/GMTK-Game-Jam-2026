@@ -21,7 +21,7 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
     private GameObject stairwellPrefab;
 
     private ElevatorDefinitions elevatorDefinitions;
-    private List<Elevator> elevators;
+    public List<Elevator> elevators;
 
     public List<bool> disabledFloors;
     private List<Stairwell> stairwells;

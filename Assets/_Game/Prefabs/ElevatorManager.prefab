@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8217276583508534511}
   - component: {fileID: 4990308442976473167}
   - component: {fileID: 6325813643678674718}
+  - component: {fileID: 6705079871037102504}
   m_Layer: 0
   m_Name: ElevatorManager
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   startingFloor: Floor10
   elevatorPrefab: {fileID: 3211887667641779193, guid: 718c605d36410a349bb5d736bdc95719, type: 3}
   stairwellPrefab: {fileID: 354480474708950334, guid: 7fe832fd2bbe5e447b611153c9d1337e, type: 3}
+  elevators: []
   disabledFloors: 
   activeScene: 
   activeFloor: 0
@@ -65,3 +67,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayManager
   elevatorPath: Collectables
+--- !u!114 &6705079871037102504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7716205148280120943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb77df44c4def5499e3bfa71fb4d5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElevatorRandomizer
+  delayBetweenAnnoyance: 15
