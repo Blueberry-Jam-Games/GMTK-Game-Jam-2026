@@ -25,11 +25,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColour:
-        m_Texture: {fileID: 2800000, guid: 50a055ece3e914447a91222a5fce77a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8293b3766a1583342bd6ad255ae6ba10, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveMap:
-        m_Texture: {fileID: 2800000, guid: 09d91111e4214e24fa946d230e63359c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 42b0fcdc5440c7240aa7710f06fadf5a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metalic:
@@ -37,11 +37,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: a60f6106ec1d8c9419d7790385aa2a49, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2c81fb5b9435e5d4c9c3dec19a59dbae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smoothness:
-        m_Texture: {fileID: 2800000, guid: 612d709567c7ddc44ae808e3bb5c52c6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0038033b37c2d244f9b8a878bca9efa5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
