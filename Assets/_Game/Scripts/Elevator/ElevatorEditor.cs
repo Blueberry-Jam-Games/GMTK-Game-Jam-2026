@@ -84,7 +84,7 @@ public class ElevatorEditor : MonoBehaviour
                         doorSize = new Vector3(elevatorDefinitions.doorSize.x, elevatorDefinitions.doorSize.y, elevatorDefinitions.doorSize.z);
                         break;
                 }
-                if (ee.floors.Contains (floor))
+                if (ee.floors.Contains (floor-1))
                 {
                     Gizmos.color = elevator;
                     Gizmos.DrawCube (ee.position + offsetY, cubeSize);
