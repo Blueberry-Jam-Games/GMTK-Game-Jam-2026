@@ -26,4 +26,9 @@ public class HudLineItem : MonoBehaviour
             checkbox.SetActive(true);
         }
     }
+
+    private void OnDestroy()
+    {
+        GameplayManager.Instance.OnItemCollected -= OnItemCollected;        
+    }
 }

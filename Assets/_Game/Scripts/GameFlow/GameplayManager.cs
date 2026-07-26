@@ -15,7 +15,7 @@ public class GameplayManager : SingletonGameObject<GameplayManager>
 
     public event ItemCollectEvent OnItemCollected;
 
-    private void Start()
+    public void Start()
     {
         collectablesDefinitions = Resources.Load<CollectablesDefinitions> (elevatorPath);
         collection = new Dictionary<string, CollectableItem>();
