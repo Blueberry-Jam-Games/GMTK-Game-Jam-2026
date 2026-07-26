@@ -1214,7 +1214,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ElevatorMoving
     clip: {fileID: 8300000, guid: df7c8263b24beac4d8f0e2347d2c1201, type: 3}
-    mixerGroup: {fileID: 24300002, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 1
     pitch: 1
     loop: 0
