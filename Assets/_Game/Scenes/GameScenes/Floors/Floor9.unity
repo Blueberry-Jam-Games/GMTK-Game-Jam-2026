@@ -1796,7 +1796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
   collectionName: Severance Package
-  destroyOnSelect: 0
+  destroyOnSelect: 1
 --- !u!114 &282119913
 MonoBehaviour:
   m_ObjectHideFlags: 0
