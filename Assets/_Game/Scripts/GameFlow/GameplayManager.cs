@@ -11,6 +11,10 @@ public class GameplayManager : SingletonGameObject<GameplayManager>
 
     private CollectablesDefinitions collectablesDefinitions;
 
+    public delegate void ItemCollectEvent(CollectableItem item);
+
+    public event ItemCollectEvent OnItemCollected;
+
     private void Start()
     {
         collectablesDefinitions = Resources.Load<CollectablesDefinitions> (elevatorPath);
@@ -27,6 +31,7 @@ public class GameplayManager : SingletonGameObject<GameplayManager>
         if (collection.ContainsKey(item))
         {
             collection[item].MarkCollected();
+            OnItemCollected?.Invoke(collection[item]);
         }
         else
         {
