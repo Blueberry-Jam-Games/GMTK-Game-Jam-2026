@@ -6,6 +6,13 @@ public class TitleScreen : MonoBehaviour
 {
     [SerializeField]
     private Button playButton;
+    [SerializeField]
+    private Button creditsButton;
+    [SerializeField]
+    private Button quitButton;
+
+    [SerializeField]
+    private LevelTransitionEffect textInEffect;
 
     private bool levelLoading = false;
 
@@ -13,6 +20,10 @@ public class TitleScreen : MonoBehaviour
     {
         playButton.onClick.AddListener(PlayButtonPressed);
         LevelTransitionEffect.Templates.FadeTransition("FadeBlack", 1.0f, Color.black, false, Color.black, Color.black);
+
+        LevelLoader.Instance.RegisterTransition("textIn", textInEffect);
+
+        quitButton.onClick.AddListener(Quit);
     }
 
     private void PlayButtonPressed()
@@ -20,7 +31,12 @@ public class TitleScreen : MonoBehaviour
         if(!levelLoading)
         {
             levelLoading = true;
-            LevelLoader.Instance.LoadLevel("ElevatorsMain", "FadeBlack");
+            LevelLoader.Instance.LoadLevel("ElevatorsMain", "FadeBlack", "textIn");
         }
+    }
+
+    private void Quit()
+    {
+        Application.Quit();
     }
 }
