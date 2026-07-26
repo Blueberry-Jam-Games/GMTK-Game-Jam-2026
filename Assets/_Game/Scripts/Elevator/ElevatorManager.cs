@@ -95,6 +95,33 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         activeFloor = floorNumber;
     }
 
+    public void Reset()
+    {
+        LevelLoader.Instance.OnSceneLoaded += LevelLoaded;
+        LevelLoader.Instance.LoadLevel("ElevatorsMain", "FadeBlack", "textIn");
+    }
+
+    private void LevelLoaded(string levelName)
+    {
+        if (levelName.Equals("ElevatorsMain"))
+        {
+            LevelLoader.Instance.OnSceneLoaded -= LevelLoaded;
+
+            LevelLoader.Instance.HoldLevelLoad(loadReasonElevators);
+            GameObject player = GameObject.FindWithTag("Player");
+            BJCharacterController controller = player.GetComponent<BJCharacterController>();
+            controller.enableMovement = false;
+            controller.enableMouse = false;
+            controller.enableInteraction = false;
+            StartCoroutine(LoadReasonClear());
+
+            SceneManager.LoadScene (startingFloor, LoadSceneMode.Additive);
+            activeScene = startingFloor;
+            TryGetFloorName(startingFloor, out int floorNumber);
+            activeFloor = floorNumber;
+        }
+    }
+
     private IEnumerator LoadReasonClear()
     {
         yield return BJ.Coroutines.WaitforSeconds(2);

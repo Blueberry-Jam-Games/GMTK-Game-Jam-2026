@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DebugEditor
   - Clock
+  - PlayerRoot
   layers:
   - Default
   - TransparentFX
