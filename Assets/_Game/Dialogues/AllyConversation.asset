@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogues:
   - characterName: Ali
-    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    characterArt: {fileID: 21300000, guid: b21dbbc927f2041459cd9b292e8a5e83, type: 3}
     speech:
     - "Hey, I\u2019m so sorry, I just heard the news. You doing okay?"
   - characterName: You
@@ -22,7 +22,7 @@ MonoBehaviour:
     speech:
     - 'Well enough, I suppose. For a fired person. '
   - characterName: Ali
-    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    characterArt: {fileID: 21300000, guid: b21dbbc927f2041459cd9b292e8a5e83, type: 3}
     speech:
     - "I guess you\u2019re gathering up all your things now? "
     - "Well, hey, if you need anything before you go, come chat with me, okay? I\u2019ll
@@ -33,7 +33,7 @@ MonoBehaviour:
     - 'Thanks. I really appreciate that. '
     - "Actually\u2026 Did you happen to hear why I was fired? "
   - characterName: Ali
-    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    characterArt: {fileID: 21300000, guid: b21dbbc927f2041459cd9b292e8a5e83, type: 3}
     speech:
     - "Nothing substantial\u2026 Rumour has it you downloaded something on your company
       laptop. "
@@ -45,6 +45,6 @@ MonoBehaviour:
       we\u2019re on task. "
     - '*sigh*'
   - characterName: Ali
-    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    characterArt: {fileID: 21300000, guid: b21dbbc927f2041459cd9b292e8a5e83, type: 3}
     speech:
     - "That\u2019s true. If I catch any concrete details, I\u2019ll let you know. "

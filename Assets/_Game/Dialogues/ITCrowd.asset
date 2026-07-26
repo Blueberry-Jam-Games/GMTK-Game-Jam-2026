@@ -14,41 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogues:
   - characterName: IT Ray
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: c67ea3845d81c684eaa4c4dcacdebbdb, type: 3}
     speech:
     - "Oh, hey, yeah. I\u2019ll just\u2026 take that from you\u2026 HEY NOSS, GET
       OVER HERE!"
   - characterName: IT Noss
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: edda4fc1d246e074d8b44a8ff644dbd1, type: 3}
     speech:
     - Hello.
   - characterName: IT Ray
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: c67ea3845d81c684eaa4c4dcacdebbdb, type: 3}
     speech:
     - "The uh\u2026 fired person is here to return the laptop."
   - characterName: IT Noss
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: edda4fc1d246e074d8b44a8ff644dbd1, type: 3}
     speech:
     - "I can see that. \u2026Thank you."
   - characterName: IT Ray
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: c67ea3845d81c684eaa4c4dcacdebbdb, type: 3}
     speech:
     - Alright, get outta here.
     - "Oh, wait. Aren\u2019t you\u2026 *laughs* Noss, this is them!"
   - characterName: IT Noss
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: edda4fc1d246e074d8b44a8ff644dbd1, type: 3}
     speech:
     - "Them? Who\u2019s them?"
   - characterName: IT Ray
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: c67ea3845d81c684eaa4c4dcacdebbdb, type: 3}
     speech:
     - "You know\u2026 the OgreTime person\u2026?"
   - characterName: IT Noss
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: edda4fc1d246e074d8b44a8ff644dbd1, type: 3}
     speech:
     - 'OH! Heh, that was excellent! '
   - characterName: IT Ray
-    characterArt: {fileID: 21300000, guid: 15a103e928c0e644f9ad41b02417cc44, type: 3}
+    characterArt: {fileID: 21300000, guid: c67ea3845d81c684eaa4c4dcacdebbdb, type: 3}
     speech:
     - "Yeah, yeah! Oh man, I can\u2019t BELIEVE you did that! Absolute mad lad! You\u2019re
       a legend. Hey, best of luck to you, yeah? "

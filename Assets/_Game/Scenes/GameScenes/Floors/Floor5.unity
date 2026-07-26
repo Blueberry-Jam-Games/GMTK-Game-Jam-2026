@@ -3717,6 +3717,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1713734305065426088, guid: 21d25804caaa78a4dba22f4200442e0a, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 8511d6e35c744364e9b5a02c4ca948f7, type: 2}
     - target: {fileID: 1959493745765062784, guid: 21d25804caaa78a4dba22f4200442e0a, type: 3}
       propertyPath: m_Name
       value: FemaleNPC_1_1
@@ -4861,19 +4865,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.50308067
+      value: 0.36893594
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8642395
+      value: -0.92945486
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4881,7 +4885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -119.592
+      value: -136.7
       objectReference: {fileID: 0}
     - target: {fileID: 512472383140156131, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4891,6 +4895,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaleNPC_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5504233518264635565, guid: 44c46379ce76a054497be1f7fa0fd946, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: d3ba0a947d76ddd43aafbb9e1ade2b4a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9943,6 +9951,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 481075111122279823, guid: dc2d6c7d6c54f7e4bbb1e5e250433957, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 994ae73f13fe4a8409baf4fdd22083f2, type: 2}
     - target: {fileID: 3710793114133500356, guid: dc2d6c7d6c54f7e4bbb1e5e250433957, type: 3}
       propertyPath: m_Name
       value: MaleNPC_2
