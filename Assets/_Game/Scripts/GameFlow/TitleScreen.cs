@@ -24,6 +24,8 @@ public class TitleScreen : MonoBehaviour
         LevelLoader.Instance.RegisterTransition("textIn", textInEffect);
 
         quitButton.onClick.AddListener(Quit);
+
+        creditsButton.onClick.AddListener(Credits);
     }
 
     private void PlayButtonPressed()
@@ -38,5 +40,14 @@ public class TitleScreen : MonoBehaviour
     private void Quit()
     {
         Application.Quit();
+    }
+
+    private void Credits()
+    {
+        if (!levelLoading)
+        {
+            levelLoading = true;
+            LevelLoader.Instance.LoadLevel("CreditsScreen", "FadeBlack");
+        }
     }
 }
