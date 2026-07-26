@@ -19,7 +19,7 @@ MonoBehaviour:
   elevators:
   - position: {x: 5.5, y: 0, z: 8.5}
     floors: 0000000001000000020000000800000009000000
-    doorSide: 1
+    doorSide: 3
     initialFloor: 9
   - position: {x: -5.5, y: 0, z: 4.25}
     floors: 0200000003000000070000000800000009000000
