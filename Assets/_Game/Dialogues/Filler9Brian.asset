@@ -16,4 +16,4 @@ MonoBehaviour:
   - characterName: Coworker
     characterArt: {fileID: 21300000, guid: fdbc2aae618edb045be518aaa8582daa, type: 3}
     speech:
-    - Brian went to IT. Something about his action figure being gone.
+    - Brian went to IT. Something about his action figure, I think.

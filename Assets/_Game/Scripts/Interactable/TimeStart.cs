@@ -20,6 +20,8 @@ public class TimeStart : MonoBehaviour
             GameObject timer = GameObject.FindWithTag("Clock");
             TimeScript ts = timer.GetComponent<TimeScript>();
 
+            GameplayManager.Instance.removeBarriers = true;
+
             ts.StartTime();
         }        
     }

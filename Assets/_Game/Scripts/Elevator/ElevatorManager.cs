@@ -4,6 +4,7 @@ using BJ;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Data;
+using UnityEngine.AI;
 
 public class ElevatorManager : SingletonGameObject<ElevatorManager>
 {
@@ -117,6 +118,11 @@ public class ElevatorManager : SingletonGameObject<ElevatorManager>
         activeFloor = floorNumber;
         GameplayManager manager = GetComponent<GameplayManager>();
         manager.Start();
+
+        for(int i = 0; i < disabledFloors.Count; i++)
+        {
+            disabledFloors[i] = false;
+        }
 
         foreach(Elevator e in elevators)
         {

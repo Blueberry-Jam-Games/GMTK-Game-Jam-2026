@@ -15,6 +15,8 @@ public class GameplayManager : SingletonGameObject<GameplayManager>
 
     public event ItemCollectEvent OnItemCollected;
 
+    public bool removeBarriers = false;
+
     public void Start()
     {
         collectablesDefinitions = Resources.Load<CollectablesDefinitions> (elevatorPath);
@@ -24,6 +26,8 @@ public class GameplayManager : SingletonGameObject<GameplayManager>
         {
             collection[entry.itemName] = entry;
         }
+
+        removeBarriers = false;
     }
 
     public void MarkFound(string item)
