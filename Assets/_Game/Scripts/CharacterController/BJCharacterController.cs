@@ -195,7 +195,7 @@ public class BJCharacterController : MonoBehaviour
             Vector3 moveDirection = Quaternion.Euler(new Vector3(0, HeadRotation.y, 0)) * new Vector3(moveAxis.x, 0, moveAxis.y);
             moveDirection *= speed;
             rb.linearVelocity = moveDirection;
-            Debug.Log(rb.linearVelocity);
+            //Debug.Log(rb.linearVelocity);
             if((MathF.Abs(Vector3.Dot(rb.linearVelocity, new Vector3(1,0,0)))>0 || MathF.Abs(Vector3.Dot(rb.linearVelocity, new Vector3(0, 0, 1))) > 0)
             && !footstepsPlaying){
                 gameObject.GetComponent<SoundManager>().PlaySound("Footsteps");

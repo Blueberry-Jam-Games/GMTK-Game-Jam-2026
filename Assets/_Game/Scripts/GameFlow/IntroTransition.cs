@@ -15,7 +15,7 @@ public class IntroTransition : LevelTransitionEffect
     public override IEnumerator CurtainsUp()
     {
         animator.Play("IntroDialog");
-        yield return new WaitForSeconds(4.25f);
+        yield return new WaitForSeconds(7.25f);
     }
 
     public override void JumpToCurtainsDown()
