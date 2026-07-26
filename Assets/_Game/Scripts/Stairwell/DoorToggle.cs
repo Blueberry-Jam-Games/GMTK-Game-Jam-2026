@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using BJ;
 
 public class DoorToggle : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class DoorToggle : MonoBehaviour
     private IEnumerator ToggleDoor()
     {
         doorMoving = true;
+
+        gameObject.GetComponent<SoundManager>().PlaySound("DoorSound");
 
         if(doorOpen)
         {

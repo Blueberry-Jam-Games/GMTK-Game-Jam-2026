@@ -1214,7 +1214,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ElevatorMoving
     clip: {fileID: 8300000, guid: df7c8263b24beac4d8f0e2347d2c1201, type: 3}
-    mixerGroup: {fileID: 24300002, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
+    mixerGroup: {fileID: -7350352339507516927, guid: 2f9b70c5cd83b0340a260a35ca6a1d43, type: 2}
     volume: 1
     pitch: 1
     loop: 0
@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 01
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a90d569fb45dcee428b72656c6d10b89, type: 2}
   m_sharedMaterial: {fileID: 8027005042429790295, guid: a90d569fb45dcee428b72656c6d10b89, type: 2}
@@ -1924,8 +1924,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.15
-  m_fontSizeBase: 0.15
+  m_fontSize: 0.12
+  m_fontSizeBase: 0.12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 03
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a90d569fb45dcee428b72656c6d10b89, type: 2}
   m_sharedMaterial: {fileID: 8027005042429790295, guid: a90d569fb45dcee428b72656c6d10b89, type: 2}
@@ -2175,8 +2175,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.15
-  m_fontSizeBase: 0.15
+  m_fontSize: 0.12
+  m_fontSizeBase: 0.12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
