@@ -280,7 +280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2, y: -5.6}
+  m_AnchoredPosition: {x: 1, y: -13}
   m_SizeDelta: {x: 200.18, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289194736
@@ -303,7 +303,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: People
+  m_text: 'Abby Fry
+
+    Quinn Richardson
+
+    Nate Sternberg
+
+    David Woloshyn
+
+    Kaiden
+    Richardson'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -345,7 +354,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 22
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -369,7 +378,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -71.03812, y: -93.723816, z: -71.86401, w: -138.88531}
+  m_margin: {x: -56.489105, y: -93.723816, z: -71.86401, w: -138.88531}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -554,7 +563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2, y: -5.6}
+  m_AnchoredPosition: {x: 1, y: -13}
   m_SizeDelta: {x: 200.18, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716290442
@@ -577,7 +586,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: People
+  m_text: 'Abby Fry
+
+    Emi Duncan'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -619,7 +630,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -714,7 +725,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: People
+  m_text: 'Rose Spencer-Spreeuw
+
+    Nastasha'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -756,7 +769,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -780,7 +793,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -71.03812, y: -93.723816, z: -71.86401, w: -138.88531}
+  m_margin: {x: -50.297195, y: -93.723816, z: -72.68231, w: -138.88531}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1350,7 +1363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2, y: -5.6}
+  m_AnchoredPosition: {x: 1, y: -13}
   m_SizeDelta: {x: 200.18, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130624702
@@ -1377,7 +1390,10 @@ MonoBehaviour:
 
     Kaiden Richardson
 
-'
+    Margaret Tilley
+
+    Nate
+    Sternberg'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -1419,7 +1435,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -1443,7 +1459,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -71.03812, y: -93.723816, z: -71.86401, w: -138.88531}
+  m_margin: {x: -57.9489, y: -93.723816, z: -71.86401, w: -138.88531}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1514,7 +1530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: People
+  m_text: Margaret Tilley
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -1556,7 +1572,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -2875,7 +2891,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: People
+  m_text: 'Abby Fry
+
+    Caelan
+
+    Em Scatchard'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -2917,7 +2937,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -2941,7 +2961,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -71.03812, y: -93.723816, z: -71.86401, w: -138.88531}
+  m_margin: {x: -51.87387, y: -93.723816, z: -71.86401, w: -138.88531}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3012,7 +3032,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: People
+  m_text: 'Quinn Richardson
+
+    Em Scatchard'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
   m_sharedMaterial: {fileID: 6022270602553584042, guid: 95ea818b03221494a91918e6ae1776d0, type: 2}
@@ -3054,7 +3076,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 30
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
