@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ff683893bac9746af2ea0c678c1c78, type: 3}
+  m_Name: AllyConversation
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  dialogues:
+  - characterName: Ali
+    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    speech:
+    - "Hey, I\u2019m so sorry, I just heard the news. You doing okay?"
+  - characterName: You
+    characterArt: {fileID: 21300000, guid: 794dd41368b2b7f4bb1928c2475f7e63, type: 3}
+    speech:
+    - 'Well enough, I suppose. For a fired person. '
+  - characterName: Ali
+    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    speech:
+    - "I guess you\u2019re gathering up all your things now? "
+    - "Well, hey, if you need anything before you go, come chat with me, okay? I\u2019ll
+      do my best to help. "
+  - characterName: You
+    characterArt: {fileID: 21300000, guid: 794dd41368b2b7f4bb1928c2475f7e63, type: 3}
+    speech:
+    - 'Thanks. I really appreciate that. '
+    - "Actually\u2026 Did you happen to hear why I was fired? "
+  - characterName: Ali
+    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    speech:
+    - "Nothing substantial\u2026 Rumour has it you downloaded something on your company
+      laptop. "
+    - "I don\u2019t think that\u2019s something you\u2019d do, though."
+  - characterName: You
+    characterArt: {fileID: 21300000, guid: 794dd41368b2b7f4bb1928c2475f7e63, type: 3}
+    speech:
+    - "Nah, I know better than that. On company software? They have eyes making sure
+      we\u2019re on task. "
+    - '*sigh*'
+  - characterName: Ali
+    characterArt: {fileID: 21300000, guid: 391cadf6c6bd486409eb017a8fbea43f, type: 3}
+    speech:
+    - "That\u2019s true. If I catch any concrete details, I\u2019ll let you know. "
